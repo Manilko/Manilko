@@ -20,12 +20,12 @@ let day = calendar.component(.weekday, from: formattedDate)
 var result: String?
     switch day {
                         case 1:  result = "Sanday"
-                        case 2:  result = "Mondey"
-                        case 3:  result = "Thuesday"
+                        case 2:  result = "Monday"
+                        case 3:  result = "Tuesday"
                         case 4:  result = "Wednesday"
-                        case 5:  result = "Thersday"
+                        case 5:  result = "Thursday"
                         case 6:  result = "Friday"
-                        case 7:  result = "Saurday"
+                        case 7:  result = "Saturday"
                         default:
                             break
                 }

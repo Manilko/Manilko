@@ -48,15 +48,14 @@ class ViewController: UIViewController {
         }
     }
     
-    var zzzTwentyHours: [WelcomeElement?] = []
     var twentyHours: [WelcomeElement?] = [] {
         didSet {
-            for i in 0..<self.twentyHours.count{
-                print("\(i) \(self.twentyHours[i])")
+//            for i in 0..<self.twentyHours.count{
+//                print("\(i) \(self.twentyHours[i])")
 //                self.zzzTwentyHours.append(self.twentyHours[i])
                 //print(self.zzzTwentyHours)
                 
-            }
+            //}
             DispatchQueue.main.async {
 //                print(self.twentyHours[0])
 //                print(self.twentyHours[1])
@@ -132,7 +131,7 @@ class ViewController: UIViewController {
     
     func fetchOneDayForecast(by cityKey: String){
         
-        guard  let url = URL(string: "https://dataservice.accuweather.com/forecasts/v1/daily/1day/\(cityKey)?apikey=Dw6geMn6cIOKson61Kz4IRgEWTbZpkoJ&details=true&metric=true") else{ return }
+        guard  let url = URL(string: "https://dataservice.accuweather.com/forecasts/v1/daily/1day/\(cityKey)?apikey=\(apiKey)&details=true&metric=true") else{ return }
         
         let session = URLSession.shared
         session.dataTask(with: url) { (data, response, eror) in
@@ -158,7 +157,7 @@ class ViewController: UIViewController {
     
     func fetchFiveDayForecast (by: String){
         
-        guard  let url = URL(string: "http://dataservice.accuweather.com/forecasts/v1/daily/5day/1-326175_1_AL?apikey=Dw6geMn6cIOKson61Kz4IRgEWTbZpkoJ&details=true&metric=true") else{ return }
+        guard  let url = URL(string: "http://dataservice.accuweather.com/forecasts/v1/daily/5day/1-326175_1_AL?apikey=\(apiKey)&details=true&metric=true") else{ return }
         
         let session = URLSession.shared
         session.dataTask(with: url) { (data, response, eror) in
@@ -179,22 +178,13 @@ class ViewController: UIViewController {
             }catch{
                 print(error)
             }
-            
             }.resume()
-        
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
+  
     func fetchtwentyHours (by: String){
         
-        guard  let url = URL(string: "http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/\(by)?apikey=Dw6geMn6cIOKson61Kz4IRgEWTbZpkoJ&details=true&metric=true") else{ return }
+        guard  let url = URL(string: "http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/\(by)?apikey=\(apiKey)&details=true&metric=true") else{ return }
         
         let session = URLSession.shared
         session.dataTask(with: url) { (data, response, eror) in
@@ -219,15 +209,6 @@ class ViewController: UIViewController {
             
             }.resume()
     }
-
-    
-    
-    
-    
-    
-    
-    
-    
 }
 
 extension ViewController : UITableViewDataSource, UITableViewDelegate{
@@ -241,8 +222,6 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
         }else{
             return " Section SUN Rite SUN set"
         }
-        
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -282,27 +261,15 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
            //String(hours(isoDate: oneDayForecast?.sun.rise ?? " "))
             secondCell.l1.text = "sun rise"
             secondCell.l2.text = oneDayForecast?.sun.rise
-            //String(minutes(isoDate: oneDayForecast?.sun.rise ??  " "))
+//            let str = String((oneDayForecast?.sun.rise)!)
+//            let min = hours(isoDate: str)
+//            print( min )
             
             secondCell.l3.text = "sun set"
             secondCell.l4.text = oneDayForecast?.sun.sunSet
             return secondCell
         }
-        
-        
-        
-        
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     }
     
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
@@ -317,8 +284,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
         colcell.labe1.text = String(hours(isoDate: String(self.twentyHours[indexPath.row]!.dateTime)))
         colcell.label2.text = String(self.twentyHours[indexPath.row]!.temperature.value )
         
-    
     return colcell
-}
-
+    }
 }

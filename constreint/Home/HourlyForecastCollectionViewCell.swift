@@ -1,5 +1,5 @@
 //
-//  MyCollectionViewCell.swift
+//  HourlyForecastCollectionViewCell.swift
 //  constreint
 //
 //  Created by iStaff on 11/22/19.
@@ -8,14 +8,9 @@
 
 import UIKit
 
-class MyCollectionViewCell: UICollectionViewCell {
-    
+class HourlyForecastCollectionViewCell: UICollectionViewCell {
+//    toDo chenge Label names
     @IBOutlet weak var labe1: UILabel!
-    
     @IBOutlet weak var label2: UILabel!
-    
-    override func awakeFromNib() {
-        //labe1.text = "jehchheiwgc"
-    }
-    
+   
 }

@@ -7,25 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C02B4582387CB8D00CE0C59 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C02B4572387CB8D00CE0C59 /* MyCollectionViewCell.swift */; };
+		5C02B4582387CB8D00CE0C59 /* HourlyForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C02B4572387CB8D00CE0C59 /* HourlyForecastCollectionViewCell.swift */; };
 		5C02B45A238884D400CE0C59 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C02B459238884D400CE0C59 /* File.swift */; };
 		5C02B45C2388876B00CE0C59 /* DayForecastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C02B45B2388876B00CE0C59 /* DayForecastService.swift */; };
-		5C02B45E23888A6C00CE0C59 /* SecondTabelViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C02B45D23888A6C00CE0C59 /* SecondTabelViewCellTableViewCell.swift */; };
+		5C02B45E23888A6C00CE0C59 /* SunInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C02B45D23888A6C00CE0C59 /* SunInfoTableViewCell.swift */; };
 		5C02B4602388955A00CE0C59 /* CityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C02B45F2388955A00CE0C59 /* CityService.swift */; };
 		5C04B2CC23852B9E0069F944 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04B2CB23852B9E0069F944 /* AppDelegate.swift */; };
 		5C04B2CE23852B9E0069F944 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04B2CD23852B9E0069F944 /* ViewController.swift */; };
 		5C04B2D123852B9E0069F944 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C04B2CF23852B9E0069F944 /* Main.storyboard */; };
 		5C04B2D323852BA00069F944 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C04B2D223852BA00069F944 /* Assets.xcassets */; };
 		5C04B2D623852BA00069F944 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C04B2D423852BA00069F944 /* LaunchScreen.storyboard */; };
-		5C080FF623873A9100845471 /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C080FF523873A9100845471 /* MyTableViewCell.swift */; };
+		5C080FF623873A9100845471 /* DailyForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C080FF523873A9100845471 /* DailyForecastTableViewCell.swift */; };
 		5CFE4CD8238D478A00B47FA3 /* DataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE4CD7238D478A00B47FA3 /* DataServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5C02B4572387CB8D00CE0C59 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
+		5C02B4572387CB8D00CE0C59 /* HourlyForecastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastCollectionViewCell.swift; sourceTree = "<group>"; };
 		5C02B459238884D400CE0C59 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		5C02B45B2388876B00CE0C59 /* DayForecastService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayForecastService.swift; sourceTree = "<group>"; };
-		5C02B45D23888A6C00CE0C59 /* SecondTabelViewCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTabelViewCellTableViewCell.swift; sourceTree = "<group>"; };
+		5C02B45D23888A6C00CE0C59 /* SunInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunInfoTableViewCell.swift; sourceTree = "<group>"; };
 		5C02B45F2388955A00CE0C59 /* CityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityService.swift; sourceTree = "<group>"; };
 		5C04B2C823852B9E0069F944 /* constreint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = constreint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C04B2CB23852B9E0069F944 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -34,7 +34,7 @@
 		5C04B2D223852BA00069F944 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C04B2D523852BA00069F944 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C04B2D723852BA00069F944 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C080FF523873A9100845471 /* MyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
+		5C080FF523873A9100845471 /* DailyForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastTableViewCell.swift; sourceTree = "<group>"; };
 		5CFE4CD7238D478A00B47FA3 /* DataServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,21 +68,53 @@
 		5C04B2CA23852B9E0069F944 /* constreint */ = {
 			isa = PBXGroup;
 			children = (
-				5C04B2CB23852B9E0069F944 /* AppDelegate.swift */,
-				5C04B2CD23852B9E0069F944 /* ViewController.swift */,
-				5C080FF523873A9100845471 /* MyTableViewCell.swift */,
-				5C02B45D23888A6C00CE0C59 /* SecondTabelViewCellTableViewCell.swift */,
-				5C02B459238884D400CE0C59 /* File.swift */,
-				5C02B4572387CB8D00CE0C59 /* MyCollectionViewCell.swift */,
+				5CABD2B1239047C200431DBB /* SupportingFiles */,
+				5CABD2B42390486B00431DBB /* Home */,
 				5C04B2CF23852B9E0069F944 /* Main.storyboard */,
+				5CABD2B32390482800431DBB /* Models */,
+				5CABD2B2239047FB00431DBB /* Services */,
+				5C04B2D723852BA00069F944 /* Info.plist */,
+			);
+			path = constreint;
+			sourceTree = "<group>";
+		};
+		5CABD2B1239047C200431DBB /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				5C04B2CB23852B9E0069F944 /* AppDelegate.swift */,
 				5C04B2D223852BA00069F944 /* Assets.xcassets */,
 				5C04B2D423852BA00069F944 /* LaunchScreen.storyboard */,
-				5C04B2D723852BA00069F944 /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		5CABD2B2239047FB00431DBB /* Services */ = {
+			isa = PBXGroup;
+			children = (
 				5C02B45F2388955A00CE0C59 /* CityService.swift */,
 				5C02B45B2388876B00CE0C59 /* DayForecastService.swift */,
 				5CFE4CD7238D478A00B47FA3 /* DataServices.swift */,
 			);
-			path = constreint;
+			path = Services;
+			sourceTree = "<group>";
+		};
+		5CABD2B32390482800431DBB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5C02B459238884D400CE0C59 /* File.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5CABD2B42390486B00431DBB /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				5C04B2CD23852B9E0069F944 /* ViewController.swift */,
+				5C080FF523873A9100845471 /* DailyForecastTableViewCell.swift */,
+				5C02B45D23888A6C00CE0C59 /* SunInfoTableViewCell.swift */,
+				5C02B4572387CB8D00CE0C59 /* HourlyForecastCollectionViewCell.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,12 +191,12 @@
 				5C02B45A238884D400CE0C59 /* File.swift in Sources */,
 				5C02B45C2388876B00CE0C59 /* DayForecastService.swift in Sources */,
 				5C04B2CE23852B9E0069F944 /* ViewController.swift in Sources */,
-				5C02B45E23888A6C00CE0C59 /* SecondTabelViewCellTableViewCell.swift in Sources */,
+				5C02B45E23888A6C00CE0C59 /* SunInfoTableViewCell.swift in Sources */,
 				5C04B2CC23852B9E0069F944 /* AppDelegate.swift in Sources */,
-				5C02B4582387CB8D00CE0C59 /* MyCollectionViewCell.swift in Sources */,
+				5C02B4582387CB8D00CE0C59 /* HourlyForecastCollectionViewCell.swift in Sources */,
 				5CFE4CD8238D478A00B47FA3 /* DataServices.swift in Sources */,
 				5C02B4602388955A00CE0C59 /* CityService.swift in Sources */,
-				5C080FF623873A9100845471 /* MyTableViewCell.swift in Sources */,
+				5C080FF623873A9100845471 /* DailyForecastTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

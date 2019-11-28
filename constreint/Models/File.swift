@@ -12,7 +12,7 @@ import Foundation
 let apiKey = "Dw6geMn6cIOKson61Kz4IRgEWTbZpkoJ"
 
 // city
-struct City: Decodable {
+struct CityData: Decodable {
     let key: String
     let localizedName: String
     //"Key": "1-326175_1_AL"
@@ -22,17 +22,17 @@ struct City: Decodable {
     }
 }
 //five
-struct Five: Decodable {
-    let dailyForecasts: [fiveDailyForecast]
+struct FiveDay: Decodable {
+    let dailyForecasts: [FiveDailyForecast]
     
     enum CodingKeys: String, CodingKey {
         case dailyForecasts = "DailyForecasts"
     }
 }
 
-struct fiveDailyForecast: Decodable {
+struct FiveDailyForecast: Decodable {
     let date: String
-    let temperature: fiveTemperature
+    let temperature: FiveDayTemperature
     
     enum CodingKeys: String, CodingKey {
         case date = "Date"
@@ -41,9 +41,9 @@ struct fiveDailyForecast: Decodable {
 }
 
 
-struct fiveTemperature: Decodable {
-    let minimum: fiveImum
-    let maximum: fiveImum
+struct FiveDayTemperature: Decodable {
+    let minimum: FiveDayTemperatureValue
+    let maximum: FiveDayTemperatureValue
     
     enum CodingKeys: String, CodingKey {
         case minimum = "Minimum"
@@ -51,7 +51,7 @@ struct fiveTemperature: Decodable {
     }
 }
 
-struct fiveImum: Decodable {
+struct FiveDayTemperatureValue: Decodable {
     let value: Double
     enum CodingKeys: String, CodingKey {
         case value = "Value"
@@ -59,8 +59,8 @@ struct fiveImum: Decodable {
 }
 
 // one
-struct Welcome: Decodable {
-    let dailyForecasts: [DailyForecast]
+struct OneDay: Decodable {
+    let dailyForecasts: [OneDailyForecast]
     
     enum CodingKeys: String, CodingKey {
         case dailyForecasts = "DailyForecasts"
@@ -68,10 +68,10 @@ struct Welcome: Decodable {
 }
 
 
-struct DailyForecast: Decodable {
+struct OneDailyForecast: Decodable {
     let date: String
     let sun: Sun
-    let temperature: Temperature
+    let temperature: OneDayTemperature
     
     enum CodingKeys: String, CodingKey {
         case date = "Date"
@@ -83,18 +83,18 @@ struct DailyForecast: Decodable {
 
 struct Sun: Decodable {
     let rise: String
-    let sunSet: String
+    let set: String
     
     enum CodingKeys: String, CodingKey {
         case rise = "Rise"
-        case sunSet = "Set"
+        case set = "Set"
     }
 }
 
 
-struct Temperature: Decodable {
-    let minimum: Imum
-    let maximum: Imum
+struct OneDayTemperature: Decodable {
+    let minimum: OneDayTemperatureValue
+    let maximum: OneDayTemperatureValue
     
     enum CodingKeys: String, CodingKey {
         case minimum = "Minimum"
@@ -103,7 +103,7 @@ struct Temperature: Decodable {
 }
 
 
-struct Imum: Decodable {
+struct OneDayTemperatureValue: Decodable {
     let value: Double
     enum CodingKeys: String, CodingKey {
         case value = "Value"
@@ -112,9 +112,9 @@ struct Imum: Decodable {
 
 
 //12hour
-struct WelcomeElement: Decodable {
+struct TwelveHoursForecast: Decodable {
     let dateTime: String
-    let temperature: Temperature12
+    let temperature: TwelveHoursTemperatureForecast
     
     enum CodingKeys: String, CodingKey {
         case dateTime = "DateTime"
@@ -122,7 +122,7 @@ struct WelcomeElement: Decodable {
     }
 }
 
-struct Temperature12: Decodable {
+struct TwelveHoursTemperatureForecast: Decodable {
     let value: Double
     
     enum CodingKeys: String, CodingKey {

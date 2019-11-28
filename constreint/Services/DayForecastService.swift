@@ -20,7 +20,7 @@ func AZX (apiKey: String, cityKey: String){
         //print(response)
         
         do{
-            let json = try JSONDecoder().decode(Welcome.self, from: data)
+            let json = try JSONDecoder().decode(OneDay.self, from: data)
             print(json)
             json.dailyForecasts[0].temperature.maximum.value
         }catch{

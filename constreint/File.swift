@@ -73,7 +73,6 @@ struct DailyForecast: Decodable {
     let sun: Sun
     let temperature: Temperature
     
-    
     enum CodingKeys: String, CodingKey {
         case date = "Date"
         case sun = "Sun"
@@ -110,10 +109,6 @@ struct Imum: Decodable {
         case value = "Value"
     }
 }
-
-
-
-
 
 
 //12hour

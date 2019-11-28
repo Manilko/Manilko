@@ -268,7 +268,7 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
 //                cell.lab.text = self.fiveDayForecast[i]?.date
 //            }
             //cell.lab.text = self.fiveDayForecast[1]?.date
-            cell.lab.text = self.fiveDayForecast[indexPath.row]?.date
+            cell.lab.text = dataDay(isoDate: self.fiveDayForecast[indexPath.row]?.date ?? " ")
             cell.la2.text = String(self.fiveDayForecast[indexPath.row]!.temperature.maximum.value)
             cell.label.text = String(self.fiveDayForecast[indexPath.row]!.temperature.minimum.value)
             
@@ -279,9 +279,11 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
             if secondCell == nil{
                 secondCell = UITableViewCell.init(style: .default, reuseIdentifier: "idSecondCell") as! SecondTabelViewCellTableViewCell
             }
-            
+           //String(hours(isoDate: oneDayForecast?.sun.rise ?? " "))
             secondCell.l1.text = "sun rise"
             secondCell.l2.text = oneDayForecast?.sun.rise
+            //String(minutes(isoDate: oneDayForecast?.sun.rise ??  " "))
+            
             secondCell.l3.text = "sun set"
             secondCell.l4.text = oneDayForecast?.sun.sunSet
             return secondCell
@@ -311,7 +313,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         var colcell = colectionView.dequeueReusableCell(withReuseIdentifier: "idCellCol", for: indexPath) as! MyCollectionViewCell
-        colcell.labe1.text = String(self.twentyHours[indexPath.row]!.dateTime )
+        
+        colcell.labe1.text = String(hours(isoDate: String(self.twentyHours[indexPath.row]!.dateTime)))
         colcell.label2.text = String(self.twentyHours[indexPath.row]!.temperature.value )
         
     

@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var dayTabel: UITableView!
     @IBOutlet weak var colectionView: UICollectionView!
     // todo temperatureLabel
-    @IBOutlet weak var t: UILabel!
+    @IBOutlet weak var temperatureMainScreen: UILabel!
     
     @IBOutlet weak var cityNameLabel: UILabel!
     
@@ -43,10 +43,7 @@ class ViewController: UIViewController {
     var oneDayForecast: [OneDailyForecast] = [] {
         didSet {
             DispatchQueue.main.async {
-                //                self.t.text = String(self.oneDayForecast!.temperature.maximum.value)
-                //print(String(self.oneDayForecast[0].temperature.maximum.value))
-                //self.t.text = "kjbvjerbv"
-                
+                self.temperatureMainScreen.text = String(self.oneDayForecast[0].temperature.maximum.value)
             }
         }
     }
@@ -129,7 +126,7 @@ class ViewController: UIViewController {
             }
             
             }.resume()
-        //print(cityKey)
+        
         
     }
     

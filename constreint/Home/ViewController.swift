@@ -202,11 +202,11 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
             }
             secondCell.l1.text = "sun rise"
             
-            let sunriseHours = hours(isoDate: oneDayForecast[indexPath.row].sun.rise)
-            let sunriseMinutes = minutes(isoDate: oneDayForecast[indexPath.row].sun.rise)
-            secondCell.l2.text = "\(sunriseHours):\(sunriseMinutes)"
+//            let sunriseHours = hours(isoDate: oneDayForecast[indexPath.row].sun.rise)
+//            let sunriseMinutes = minutes(isoDate: oneDayForecast[indexPath.row].sun.rise)
+            secondCell.l2.text = "\(hours(isoDate: oneDayForecast[indexPath.row].sun.rise)):\(minutes(isoDate: oneDayForecast[indexPath.row].sun.rise))"
             secondCell.l3.text = "sun set"
-            secondCell.l4.text = oneDayForecast[indexPath.row].sun.set
+            secondCell.l4.text = "\(hours(isoDate: oneDayForecast[indexPath.row].sun.set)):\(minutes(isoDate: oneDayForecast[indexPath.row].sun.set))"
             return secondCell
         }
     }

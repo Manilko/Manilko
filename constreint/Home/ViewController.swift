@@ -19,12 +19,7 @@ class ViewController: UIViewController {
     
     var cityKey : String? {
         didSet {
-            //            DispatchQueue.main.async {
-            //self.cityNameLabel.text = self.cityKey
-            
-            //            }
-            
-            
+          
             // fetchCityName(by: cityKey ?? " ") - add this function
             fetchOneDayForecast(by: cityKey)
             fetchFiveDayForecast(by: cityKey ?? " ")
@@ -50,15 +45,7 @@ class ViewController: UIViewController {
     
     var twentyHours: [TwelveHoursForecast?] = [] {
         didSet {
-            //            for i in 0..<self.twentyHours.count{
-            //                print("\(i) \(self.twentyHours[i])")
-            //                self.zzzTwentyHours.append(self.twentyHours[i])
-            //print(self.zzzTwentyHours)
-            
-            //}
             DispatchQueue.main.async {
-                //                print(self.twentyHours[0])
-                //                print(self.twentyHours[1])
                 self.dayTabel.reloadData()
                 self.colectionView.reloadData()
                 
@@ -69,20 +56,7 @@ class ViewController: UIViewController {
     var fiveDayForecast: [FiveDailyForecast?] = [] {
         didSet {
             DispatchQueue.main.async {
-                //print(self.fiveDayForecast[2])
-                //print(self.fiveDayForecast.count)
-                //
-                //                for i in 0..<self.fiveDayForecast.count{
-                //                    print(self.fiveDayForecast[i]?.date)
-                //                }
-                //                for i in 0..<self.fiveDayForecast.count{
-                //                    print(self.fiveDayForecast[i]?.temperature.maximum.value)
-                //                }
-                //                for i in 0..<self.fiveDayForecast.count{
-                //                    print(self.fiveDayForecast[i]?.temperature.minimum.value)
-                //                }
-                
-                
+               
             }
         }
     }
@@ -99,11 +73,7 @@ class ViewController: UIViewController {
         fetchCityBy(name: "Vinnytsia")
         
         print("!!!!!!")
-        //print(zzzTwentyHours)
-        
-        
-        //print(cityKey)
-        //c.text = city
+       
     }
     
     func fetchCityBy(name: String) {
@@ -113,10 +83,7 @@ class ViewController: UIViewController {
         let session = URLSession.shared
         session.dataTask(with: url) { (data, response, eror) in
             guard  let data = data else { return }
-            //print(data)
-            //guard let response = response else { return }
-            //print(response)
-            
+    
             do {
                 let cities = try JSONDecoder().decode([CityData].self, from: data)
                 self.cityKey = cities[0].key
@@ -138,15 +105,10 @@ class ViewController: UIViewController {
         let session = URLSession.shared
         session.dataTask(with: url) { (data, response, eror) in
             guard  let data = data else { return }
-            //print(data)
-            //guard let response = response else { return }
-            //print(response)
             
             do{
                 let dayForecast = try JSONDecoder().decode(OneDay.self, from: data)
                 self.oneDayForecast = dayForecast.dailyForecasts
-                //self.oneDayForecast = dayForecast.dailyForecasts[1]
-                //print(self.oneDayForecast)
             }catch{
                 print(error)
             }
@@ -164,19 +126,10 @@ class ViewController: UIViewController {
         let session = URLSession.shared
         session.dataTask(with: url) { (data, response, eror) in
             guard  let data = data else { return }
-            //print(data)
-            //guard let response = response else { return }
-            //print(response)
             
             do{
                 let fiveForecast = try JSONDecoder().decode(FiveDay.self, from: data)
                 self.fiveDayForecast = fiveForecast.dailyForecasts
-                //                for i in 0..<fiveForecast.dailyForecasts.count{
-                //                self.fiveDayForecast.append(fiveForecast.dailyForecasts[i])
-                //                    print(i)
-                //                }
-                //                self.fiveDayForecast.append(fiveForecast.dailyForecasts[0])
-                //                self.fiveDayForecast.append(fiveForecast.dailyForecasts[1])
             }catch{
                 print(error)
             }
@@ -190,21 +143,13 @@ class ViewController: UIViewController {
         
         let session = URLSession.shared
         session.dataTask(with: url) { (data, response, eror) in
-            guard  let data = data else { return }
-            //print(data)
-            //guard let response = response else { return }
-            //print(response)
-            
+            guard  let data = data else {
+                return
+                
+            }
             do{
                 let twentyHoursForecast = try JSONDecoder().decode([TwelveHoursForecast].self, from: data)
-                //print(json[0])
                 self.twentyHours = twentyHoursForecast
-                //self.twentyHours?.append(json[0])
-                //                json[0].dateTime
-                //                json[0].temperature.value
-                //                json[11].dateTime
-                //                json[11].temperature.value
-                //self.twentyHours = json[0].
             }catch{
                 print(error)
             }
@@ -228,7 +173,6 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
-            //print(self.fiveDayForecast.count)
             return fiveDayForecast.count
         }else{
             return oneDayForecast.count
@@ -245,10 +189,6 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
                 cell = UITableViewCell.init(style: .default, reuseIdentifier: "idCell") as! DailyForecastTableViewCell
             }
             print("@@@@@@@@@@@@")
-            //            for i in 0..<fiveDayForecast.count{
-            //                cell.lab.text = self.fiveDayForecast[i]?.date
-            //            }
-            //cell.lab.text = self.fiveDayForecast[1]?.date
             cell.lab.text = dataDay(isoDate: self.fiveDayForecast[indexPath.row]?.date ?? " ")
             cell.la2.text = String(self.fiveDayForecast[indexPath.row]!.temperature.maximum.value)
             cell.label.text = String(self.fiveDayForecast[indexPath.row]!.temperature.minimum.value)
@@ -260,16 +200,11 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
             if secondCell == nil{
                 secondCell = UITableViewCell.init(style: .default, reuseIdentifier: "idSecondCell") as! SunInfoTableViewCell
             }
-            //String(hours(isoDate: oneDayForecast?.sun.rise ?? " "))
             secondCell.l1.text = "sun rise"
             
             let sunriseHours = hours(isoDate: oneDayForecast[indexPath.row].sun.rise)
             let sunriseMinutes = minutes(isoDate: oneDayForecast[indexPath.row].sun.rise)
             secondCell.l2.text = "\(sunriseHours):\(sunriseMinutes)"
-            //            let str = String((oneDayForecast?.sun.rise)!)
-            //            let min = hours(isoDate: str)
-            //            print( min )
-            
             secondCell.l3.text = "sun set"
             secondCell.l4.text = oneDayForecast[indexPath.row].sun.set
             return secondCell

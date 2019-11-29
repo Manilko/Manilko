@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         }
     }
     
-    var oneDayForecast: [DailyForecast] = [] {
+    var oneDayForecast: [OneDailyForecast] = [] {
         didSet {
             DispatchQueue.main.async {
                 //                self.t.text = String(self.oneDayForecast!.temperature.maximum.value)
@@ -51,7 +51,7 @@ class ViewController: UIViewController {
         }
     }
     
-    var twentyHours: [WelcomeElement?] = [] {
+    var twentyHours: [TwelveHoursForecast?] = [] {
         didSet {
             //            for i in 0..<self.twentyHours.count{
             //                print("\(i) \(self.twentyHours[i])")
@@ -69,7 +69,7 @@ class ViewController: UIViewController {
         }
     }
     
-    var fiveDayForecast: [fiveDailyForecast?] = [] {
+    var fiveDayForecast: [FiveDailyForecast?] = [] {
         didSet {
             DispatchQueue.main.async {
                 //print(self.fiveDayForecast[2])
@@ -121,7 +121,7 @@ class ViewController: UIViewController {
             //print(response)
             
             do {
-                let cities = try JSONDecoder().decode([City].self, from: data)
+                let cities = try JSONDecoder().decode([CityData].self, from: data)
                 self.cityKey = cities[0].key
                 self.cityName = cities[0].localizedName
             } catch {
@@ -146,7 +146,7 @@ class ViewController: UIViewController {
             //print(response)
             
             do{
-                let dayForecast = try JSONDecoder().decode(Welcome.self, from: data)
+                let dayForecast = try JSONDecoder().decode(OneDay.self, from: data)
                 self.oneDayForecast = dayForecast.dailyForecasts
                 //self.oneDayForecast = dayForecast.dailyForecasts[1]
                 //print(self.oneDayForecast)
@@ -172,7 +172,7 @@ class ViewController: UIViewController {
             //print(response)
             
             do{
-                let fiveForecast = try JSONDecoder().decode(Five.self, from: data)
+                let fiveForecast = try JSONDecoder().decode(FiveDay.self, from: data)
                 self.fiveDayForecast = fiveForecast.dailyForecasts
                 //                for i in 0..<fiveForecast.dailyForecasts.count{
                 //                self.fiveDayForecast.append(fiveForecast.dailyForecasts[i])
@@ -199,7 +199,7 @@ class ViewController: UIViewController {
             //print(response)
             
             do{
-                let twentyHoursForecast = try JSONDecoder().decode([WelcomeElement].self, from: data)
+                let twentyHoursForecast = try JSONDecoder().decode([TwelveHoursForecast].self, from: data)
                 //print(json[0])
                 self.twentyHours = twentyHoursForecast
                 //self.twentyHours?.append(json[0])
@@ -274,7 +274,7 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
             //            print( min )
             
             secondCell.l3.text = "sun set"
-            secondCell.l4.text = oneDayForecast[indexPath.row].sun.sunSet
+            secondCell.l4.text = oneDayForecast[indexPath.row].sun.set
             return secondCell
         }
     }

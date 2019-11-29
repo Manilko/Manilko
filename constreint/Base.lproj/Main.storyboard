@@ -214,7 +214,7 @@
                         <outlet property="cityNameLabel" destination="TFe-dM-9p7" id="dft-Me-EHg"/>
                         <outlet property="colectionView" destination="ghs-bt-eeX" id="fhT-f3-VyE"/>
                         <outlet property="dayTabel" destination="GxI-wH-tyF" id="9lD-VQ-Xg6"/>
-                        <outlet property="t" destination="WOF-oJ-tAm" id="NXV-EK-3X4"/>
+                        <outlet property="temperatureMainScreen" destination="WOF-oJ-tAm" id="NXV-EK-3X4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

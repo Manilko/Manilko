@@ -202,11 +202,11 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
             }
             secondCell.l1.text = "sun rise"
             
-            let sunriseHours = hours(isoDate: oneDayForecast[indexPath.row].sun.rise)
-            let sunriseMinutes = minutes(isoDate: oneDayForecast[indexPath.row].sun.rise)
-            secondCell.l2.text = "\(sunriseHours):\(sunriseMinutes)"
+//            let sunriseHours = hours(isoDate: oneDayForecast[indexPath.row].sun.rise)
+//            let sunriseMinutes = minutes(isoDate: oneDayForecast[indexPath.row].sun.rise)
+            secondCell.l2.text = "\(hours(isoDate: oneDayForecast[indexPath.row].sun.rise)):\(minutes(isoDate: oneDayForecast[indexPath.row].sun.rise))"
             secondCell.l3.text = "sun set"
-            secondCell.l4.text = oneDayForecast[indexPath.row].sun.set
+            secondCell.l4.text = "\(hours(isoDate: oneDayForecast[indexPath.row].sun.set)):\(minutes(isoDate: oneDayForecast[indexPath.row].sun.set))"
             return secondCell
         }
     }
@@ -219,7 +219,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        var colcell = colectionView.dequeueReusableCell(withReuseIdentifier: "idCellCol", for: indexPath) as! HourlyForecastCollectionViewCell
+        let colcell = colectionView.dequeueReusableCell(withReuseIdentifier: "idCellCol", for: indexPath) as! HourlyForecastCollectionViewCell
         
         colcell.labe1.text = String(hours(isoDate: String(self.twentyHours[indexPath.row]!.dateTime)))
         colcell.label2.text = String(self.twentyHours[indexPath.row]!.temperature.value )

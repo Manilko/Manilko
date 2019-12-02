@@ -219,7 +219,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        var colcell = colectionView.dequeueReusableCell(withReuseIdentifier: "idCellCol", for: indexPath) as! HourlyForecastCollectionViewCell
+        let colcell = colectionView.dequeueReusableCell(withReuseIdentifier: "idCellCol", for: indexPath) as! HourlyForecastCollectionViewCell
         
         colcell.labe1.text = String(hours(isoDate: String(self.twentyHours[indexPath.row]!.dateTime)))
         colcell.label2.text = String(self.twentyHours[indexPath.row]!.temperature.value )

@@ -10,8 +10,8 @@ import UIKit
 
 class DailyForecastTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var lab: UILabel!
-    @IBOutlet weak var la2: UILabel!
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var dayInFiveDayForecast: UILabel!
+    @IBOutlet weak var minTemprInFiveDayForecast: UILabel!
+    @IBOutlet weak var maxTemprInFiveDayForecast: UILabel!
 
 }

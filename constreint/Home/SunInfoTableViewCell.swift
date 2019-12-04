@@ -9,9 +9,9 @@
 import UIKit
 
 class SunInfoTableViewCell: UITableViewCell {
-    @IBOutlet weak var l1: UILabel!
-    @IBOutlet weak var l2: UILabel!
-    @IBOutlet weak var l3: UILabel!
-    @IBOutlet weak var l4: UILabel!
+    @IBOutlet weak var sunRiseName: UILabel!
+    @IBOutlet weak var sunRiseTime: UILabel!
+    @IBOutlet weak var sunSetName: UILabel!
+    @IBOutlet weak var sunSetTime: UILabel!
     
 }

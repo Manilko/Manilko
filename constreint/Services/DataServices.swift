@@ -19,7 +19,7 @@ func dataDay(isoDate: String) -> String{
     let day = calendar.component(.weekday, from: formattedDate)
     var result: String?
     switch day {
-    case 1:  result = "Sanday"
+    case 1:  result = "Sunday"
     case 2:  result = "Monday"
     case 3:  result = "Tuesday"
     case 4:  result = "Wednesday"

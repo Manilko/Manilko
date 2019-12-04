@@ -10,7 +10,7 @@ import UIKit
 
 class HourlyForecastCollectionViewCell: UICollectionViewCell {
 //    toDo chenge Label names
-    @IBOutlet weak var labe1: UILabel!
-    @IBOutlet weak var label2: UILabel!
+    @IBOutlet weak var namberHouerInTwentyForecast: UILabel!
+    @IBOutlet weak var temperatureInTwentyForecast: UILabel!
    
 }

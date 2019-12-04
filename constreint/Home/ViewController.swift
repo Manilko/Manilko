@@ -10,12 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var dayTabel: UITableView!
-    @IBOutlet weak var colectionView: UICollectionView!
-    // todo temperatureLabel
+    @IBOutlet weak var fiveDayForecastMainScreen: UITableView!
+    @IBOutlet weak var twentyHouersForecastMainScreen: UICollectionView!
     @IBOutlet weak var temperatureMainScreen: UILabel!
-    
-    @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var cityNameMainScreen: UILabel!
     
     var cityKey : String? {
         didSet {
@@ -30,7 +28,7 @@ class ViewController: UIViewController {
     var cityName: String? {
         didSet {
             DispatchQueue.main.async {
-                self.cityNameLabel.text = self.cityName
+                self.cityNameMainScreen.text = self.cityName
             }
         }
     }
@@ -46,8 +44,8 @@ class ViewController: UIViewController {
     var twentyHours: [TwelveHoursForecast?] = [] {
         didSet {
             DispatchQueue.main.async {
-                self.dayTabel.reloadData()
-                self.colectionView.reloadData()
+                self.fiveDayForecastMainScreen.reloadData()
+                self.twentyHouersForecastMainScreen.reloadData()
                 
             }
         }
@@ -64,10 +62,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dayTabel.dataSource = self
-        dayTabel.delegate = self
-        colectionView.delegate = self
-        colectionView.dataSource = self
+        fiveDayForecastMainScreen.dataSource = self
+        fiveDayForecastMainScreen.delegate = self
+        twentyHouersForecastMainScreen.delegate = self
+        twentyHouersForecastMainScreen.dataSource = self
         
         // hardcode
         fetchCityBy(name: "Vinnytsia")
@@ -119,9 +117,9 @@ class ViewController: UIViewController {
     
     
     
-    func fetchFiveDayForecast (by: String){
+    func fetchFiveDayForecast (by cityKey: String){
         
-        guard  let url = URL(string: "http://dataservice.accuweather.com/forecasts/v1/daily/5day/1-326175_1_AL?apikey=\(apiKey)&details=true&metric=true") else{ return }
+        guard  let url = URL(string: "http://dataservice.accuweather.com/forecasts/v1/daily/5day/\(cityKey)?apikey=\(apiKey)&details=true&metric=true") else{ return }
         
         let session = URLSession.shared
         session.dataTask(with: url) { (data, response, eror) in
@@ -137,9 +135,9 @@ class ViewController: UIViewController {
     }
     
     
-    func fetchtwentyHours (by: String){
+    func fetchtwentyHours (by cityKey: String){
         
-        guard  let url = URL(string: "http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/\(by)?apikey=\(apiKey)&details=true&metric=true") else{ return }
+        guard  let url = URL(string: "http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/\(cityKey)?apikey=\(apiKey)&details=true&metric=true") else{ return }
         
         let session = URLSession.shared
         session.dataTask(with: url) { (data, response, eror) in
@@ -165,9 +163,9 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0{
-            return " Section day"
+            return "Day Information"
         }else{
-            return " Section SUN Rite SUN set"
+            return "Sun Information"
         }
     }
     
@@ -183,31 +181,35 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
         
         if indexPath.section % 2 == 0 {
             
-            var cell = dayTabel.dequeueReusableCell(withIdentifier: "idCell") as! DailyForecastTableViewCell
+            var dayInformationInFiveForecastCell = fiveDayForecastMainScreen.dequeueReusableCell(withIdentifier: "idDayInformationInFiveForecastCell") as! DailyForecastTableViewCell
             
-            if cell == nil{
-                cell = UITableViewCell.init(style: .default, reuseIdentifier: "idCell") as! DailyForecastTableViewCell
+            if dayInformationInFiveForecastCell == nil{
+                dayInformationInFiveForecastCell = UITableViewCell.init(style: .default, reuseIdentifier: "idDayInformationInFiveForecastCell") as! DailyForecastTableViewCell
             }
             print("@@@@@@@@@@@@")
-            cell.lab.text = dataDay(isoDate: self.fiveDayForecast[indexPath.row]?.date ?? " ")
-            cell.la2.text = String(self.fiveDayForecast[indexPath.row]!.temperature.maximum.value)
-            cell.label.text = String(self.fiveDayForecast[indexPath.row]!.temperature.minimum.value)
+            dayInformationInFiveForecastCell.dayInFiveDayForecast.text = dataDay(isoDate: self.fiveDayForecast[indexPath.row]?.date ?? " ")
+            dayInformationInFiveForecastCell.minTemprInFiveDayForecast.text = String(self.fiveDayForecast[indexPath.row]!.temperature.maximum.value)
+            dayInformationInFiveForecastCell.maxTemprInFiveDayForecast.text = String(self.fiveDayForecast[indexPath.row]!.temperature.minimum.value)
             
-            return cell
+            return dayInformationInFiveForecastCell
         } else {
-            var secondCell = dayTabel.dequeueReusableCell(withIdentifier: "idSecondCell") as! SunInfoTableViewCell
+            var sunInformationCell = fiveDayForecastMainScreen.dequeueReusableCell(withIdentifier: "idSunInformationCell") as! SunInfoTableViewCell
             
-            if secondCell == nil{
-                secondCell = UITableViewCell.init(style: .default, reuseIdentifier: "idSecondCell") as! SunInfoTableViewCell
+            if sunInformationCell == nil{
+                sunInformationCell = UITableViewCell.init(style: .default, reuseIdentifier: "idSunInformationCell") as! SunInfoTableViewCell
             }
-            secondCell.l1.text = "sun rise"
             
-//            let sunriseHours = hours(isoDate: oneDayForecast[indexPath.row].sun.rise)
-//            let sunriseMinutes = minutes(isoDate: oneDayForecast[indexPath.row].sun.rise)
-            secondCell.l2.text = "\(hours(isoDate: oneDayForecast[indexPath.row].sun.rise)):\(minutes(isoDate: oneDayForecast[indexPath.row].sun.rise))"
-            secondCell.l3.text = "sun set"
-            secondCell.l4.text = "\(hours(isoDate: oneDayForecast[indexPath.row].sun.set)):\(minutes(isoDate: oneDayForecast[indexPath.row].sun.set))"
-            return secondCell
+            let sunRiseHours = hours(isoDate: oneDayForecast[indexPath.row].sun.rise)
+            let sunRiseMinutes = minutes(isoDate: oneDayForecast[indexPath.row].sun.rise)
+            let sunSetHours = hours(isoDate: oneDayForecast[indexPath.row].sun.set)
+            let sunSetMinutes = minutes(isoDate: oneDayForecast[indexPath.row].sun.set)
+            
+            sunInformationCell.sunRiseName.text = "sun rise"
+            sunInformationCell.sunRiseTime.text = "\(sunRiseHours):\(sunRiseMinutes)"
+            sunInformationCell.sunSetName.text = "sun set"
+            sunInformationCell.sunSetTime.text = "\(sunSetHours):\(sunSetMinutes)"
+            
+            return sunInformationCell
         }
     }
 }
@@ -219,11 +221,11 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let colcell = colectionView.dequeueReusableCell(withReuseIdentifier: "idCellCol", for: indexPath) as! HourlyForecastCollectionViewCell
+        let houersInformationCell = twentyHouersForecastMainScreen.dequeueReusableCell(withReuseIdentifier: "idHouersInformationCell", for: indexPath) as! HourlyForecastCollectionViewCell
         
-        colcell.labe1.text = String(hours(isoDate: String(self.twentyHours[indexPath.row]!.dateTime)))
-        colcell.label2.text = String(self.twentyHours[indexPath.row]!.temperature.value )
+        houersInformationCell.namberHouerInTwentyForecast.text = String(hours(isoDate: String(self.twentyHours[indexPath.row]!.dateTime)))
+        houersInformationCell.temperatureInTwentyForecast.text = String(self.twentyHours[indexPath.row]!.temperature.value )
         
-        return colcell
+        return houersInformationCell
     }
 }

@@ -25,7 +25,7 @@
                                     <constraint firstAttribute="width" secondItem="GxI-wH-tyF" secondAttribute="height" multiplier="69:53" constant="-97.641509433962256" id="tYk-YO-lg4"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="idCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="idCell" rowHeight="44" id="HpC-Ve-Vta" customClass="DailyForecastTableViewCell" customModule="constreint">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="idCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="idDayInformationInFiveForecastCell" rowHeight="44" id="HpC-Ve-Vta" customClass="DailyForecastTableViewCell" customModule="constreint">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HpC-Ve-Vta" id="LNT-kt-KCr">
@@ -67,12 +67,12 @@
                                         </tableViewCellContentView>
                                         <accessibility key="accessibilityConfiguration" identifier="idCell"/>
                                         <connections>
-                                            <outlet property="la2" destination="ZEV-RB-bhd" id="yoG-QM-mMF"/>
-                                            <outlet property="lab" destination="vvh-Ak-Bc4" id="ACd-Vd-maf"/>
-                                            <outlet property="label" destination="kn0-cV-8E9" id="lls-jT-W0u"/>
+                                            <outlet property="dayInFiveDayForecast" destination="vvh-Ak-Bc4" id="ACd-Vd-maf"/>
+                                            <outlet property="maxTemprInFiveDayForecast" destination="kn0-cV-8E9" id="lls-jT-W0u"/>
+                                            <outlet property="minTemprInFiveDayForecast" destination="ZEV-RB-bhd" id="yoG-QM-mMF"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="idsecondCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="idSecondCell" rowHeight="86" id="YIj-6J-LJS" customClass="SunInfoTableViewCell" customModule="constreint" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="idsecondCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="idSunInformationCell" rowHeight="86" id="YIj-6J-LJS" customClass="SunInfoTableViewCell" customModule="constreint" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="414" height="86"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YIj-6J-LJS" id="YIV-ws-cL4">
@@ -129,10 +129,10 @@
                                         </tableViewCellContentView>
                                         <accessibility key="accessibilityConfiguration" identifier="idCell"/>
                                         <connections>
-                                            <outlet property="l1" destination="7Sb-cN-goE" id="BGe-pf-fbK"/>
-                                            <outlet property="l2" destination="qxC-NL-PFa" id="GGb-Xu-8AY"/>
-                                            <outlet property="l3" destination="OVj-R7-JK0" id="que-CL-HnM"/>
-                                            <outlet property="l4" destination="bwA-h6-VQq" id="tRh-tF-ft6"/>
+                                            <outlet property="sunRiseName" destination="7Sb-cN-goE" id="BGe-pf-fbK"/>
+                                            <outlet property="sunRiseTime" destination="qxC-NL-PFa" id="GGb-Xu-8AY"/>
+                                            <outlet property="sunSetName" destination="OVj-R7-JK0" id="que-CL-HnM"/>
+                                            <outlet property="sunSetTime" destination="bwA-h6-VQq" id="tRh-tF-ft6"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -167,7 +167,7 @@
                                     <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="idCellCol" id="Fi3-xz-lxj" customClass="HourlyForecastCollectionViewCell" customModule="constreint" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="idHouersInformationCell" id="Fi3-xz-lxj" customClass="HourlyForecastCollectionViewCell" customModule="constreint" customModuleProvider="target">
                                         <rect key="frame" x="5" y="5" width="66" height="102"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -199,8 +199,8 @@
                                             <constraint firstItem="XlZ-Nm-d0M" firstAttribute="leading" secondItem="Fi3-xz-lxj" secondAttribute="leading" constant="12" id="pyO-Bt-O6n"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="labe1" destination="XlZ-Nm-d0M" id="vh8-u6-oAn"/>
-                                            <outlet property="label2" destination="6b3-Ta-AHw" id="mMu-HV-KRi"/>
+                                            <outlet property="namberHouerInTwentyForecast" destination="XlZ-Nm-d0M" id="vh8-u6-oAn"/>
+                                            <outlet property="temperatureInTwentyForecast" destination="6b3-Ta-AHw" id="mMu-HV-KRi"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -210,7 +210,7 @@
                                 <state key="normal" title="LINK"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWt-5s-Lxp">
-                                <rect key="frame" x="330" y="790" width="83.5" height="30"/>
+                                <rect key="frame" x="330.5" y="790" width="83.5" height="30"/>
                                 <state key="normal" title="LIST"/>
                             </button>
                         </subviews>
@@ -241,10 +241,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="cityNameLabel" destination="TFe-dM-9p7" id="dft-Me-EHg"/>
-                        <outlet property="colectionView" destination="ghs-bt-eeX" id="fhT-f3-VyE"/>
-                        <outlet property="dayTabel" destination="GxI-wH-tyF" id="9lD-VQ-Xg6"/>
+                        <outlet property="cityNameMainScreen" destination="TFe-dM-9p7" id="dft-Me-EHg"/>
+                        <outlet property="fiveDayForecastMainScreen" destination="GxI-wH-tyF" id="9lD-VQ-Xg6"/>
                         <outlet property="temperatureMainScreen" destination="WOF-oJ-tAm" id="NXV-EK-3X4"/>
+                        <outlet property="twentyHouersForecastMainScreen" destination="ghs-bt-eeX" id="fhT-f3-VyE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

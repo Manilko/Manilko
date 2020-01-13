@@ -163,8 +163,6 @@ extension SearchViewController: UITableViewDelegate {
         //present(ListViewController() , animated: true, completion: nil)
         
         
-        
-        
         //print("2    delegateList?.listCity ==>> \(delegateList?.listCity)")
         
         

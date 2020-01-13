@@ -106,12 +106,9 @@
 			children = (
 				5CABD2B1239047C200431DBB /* SupportingFiles */,
 				5CABD2B42390486B00431DBB /* Home */,
+				5CEBD17D23CC8C3B006B118C /* ListController */,
 				5C038BD62398FC2700C3FBD4 /* SearchControllet */,
 				5C04B2CF23852B9E0069F944 /* Main.storyboard */,
-				5CECB61823BE070200EC4E6E /* ListViewController.swift */,
-				5CE929FE23C8FED3001A70A4 /* listProtocol.swift */,
-				5CED2FE923BFDB4900016B27 /* TableViewController.swift */,
-				5CE9C99A23C07FF8005A7AC7 /* TListCityCell.swift */,
 				5CABD2B32390482800431DBB /* Models */,
 				5CABD2B2239047FB00431DBB /* Services */,
 				5C04B2D723852BA00069F944 /* Info.plist */,
@@ -162,6 +159,17 @@
 				5C02B4572387CB8D00CE0C59 /* HourlyForecastCollectionViewCell.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		5CEBD17D23CC8C3B006B118C /* ListController */ = {
+			isa = PBXGroup;
+			children = (
+				5CECB61823BE070200EC4E6E /* ListViewController.swift */,
+				5CE929FE23C8FED3001A70A4 /* listProtocol.swift */,
+				5CED2FE923BFDB4900016B27 /* TableViewController.swift */,
+				5CE9C99A23C07FF8005A7AC7 /* TListCityCell.swift */,
+			);
+			path = ListController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, List {
+class ViewController: UIViewController, ListProtocol {
     
     func setCity(favoritCity: String) {
         self.cityName = favoritCity

@@ -11,7 +11,7 @@ import UIKit
 class ListViewController: UITableViewController {
 
     
-    var delegat : List?
+    var delegat : ListProtocol?
     var choseCity = ""
     
     var listCity : [String] = UserDefaults.standard.object(forKey: "CITY") as? [String] ?? []
@@ -77,12 +77,12 @@ class ListViewController: UITableViewController {
     }
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "listIdCell", for: indexPath) as! TListCityCell
+        let listCitycell = tableView.dequeueReusableCell(withIdentifier: "listIdCell", for: indexPath) as! ListCityCell
         
         if listCity.count != 0{
-            cell.listCityLabel.text = listCity[indexPath.row]
+            listCitycell.listCityLabel.text = listCity[indexPath.row]
         }
-        return cell
+        return listCitycell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

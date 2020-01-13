@@ -26,7 +26,7 @@
 		5C04B2D623852BA00069F944 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C04B2D423852BA00069F944 /* LaunchScreen.storyboard */; };
 		5C080FF623873A9100845471 /* DailyForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C080FF523873A9100845471 /* DailyForecastTableViewCell.swift */; };
 		5CE929FF23C8FED3001A70A4 /* listProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE929FE23C8FED3001A70A4 /* listProtocol.swift */; };
-		5CE9C99B23C07FF8005A7AC7 /* TListCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE9C99A23C07FF8005A7AC7 /* TListCityCell.swift */; };
+		5CE9C99B23C07FF8005A7AC7 /* ListCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE9C99A23C07FF8005A7AC7 /* ListCityCell.swift */; };
 		5CECB61923BE070200EC4E6E /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CECB61823BE070200EC4E6E /* ListViewController.swift */; };
 		5CECB61B23BE0D7E00EC4E6E /* CitySearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CECB61A23BE0D7E00EC4E6E /* CitySearchTableViewCell.swift */; };
 		5CED2FEA23BFDB4900016B27 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CED2FE923BFDB4900016B27 /* TableViewController.swift */; };
@@ -56,7 +56,7 @@
 		5C04B2D723852BA00069F944 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C080FF523873A9100845471 /* DailyForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastTableViewCell.swift; sourceTree = "<group>"; };
 		5CE929FE23C8FED3001A70A4 /* listProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listProtocol.swift; sourceTree = "<group>"; };
-		5CE9C99A23C07FF8005A7AC7 /* TListCityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TListCityCell.swift; sourceTree = "<group>"; };
+		5CE9C99A23C07FF8005A7AC7 /* ListCityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCityCell.swift; sourceTree = "<group>"; };
 		5CECB61823BE070200EC4E6E /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		5CECB61A23BE0D7E00EC4E6E /* CitySearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearchTableViewCell.swift; sourceTree = "<group>"; };
 		5CED2FE923BFDB4900016B27 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -167,7 +167,7 @@
 				5CECB61823BE070200EC4E6E /* ListViewController.swift */,
 				5CE929FE23C8FED3001A70A4 /* listProtocol.swift */,
 				5CED2FE923BFDB4900016B27 /* TableViewController.swift */,
-				5CE9C99A23C07FF8005A7AC7 /* TListCityCell.swift */,
+				5CE9C99A23C07FF8005A7AC7 /* ListCityCell.swift */,
 			);
 			path = ListController;
 			sourceTree = "<group>";
@@ -251,7 +251,7 @@
 				5C00EC2C239BB19700FC6F87 /* ApiKey.swift in Sources */,
 				5C00EC32239BB75A00FC6F87 /* TwentyHoursServices.swift in Sources */,
 				5CE929FF23C8FED3001A70A4 /* listProtocol.swift in Sources */,
-				5CE9C99B23C07FF8005A7AC7 /* TListCityCell.swift in Sources */,
+				5CE9C99B23C07FF8005A7AC7 /* ListCityCell.swift in Sources */,
 				5C02B45E23888A6C00CE0C59 /* SunInfoTableViewCell.swift in Sources */,
 				5C04B2CC23852B9E0069F944 /* AppDelegate.swift in Sources */,
 				5C00EC24239BB06B00FC6F87 /* CityDataModels.swift in Sources */,

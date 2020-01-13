@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TListCityCell: UITableViewCell {
+class ListCityCell: UITableViewCell {
 
                     
     @IBOutlet weak var listCityLabel: UILabel!

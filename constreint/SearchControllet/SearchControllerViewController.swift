@@ -22,7 +22,7 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var fETCHcITIES: [CityData] = []
+    var selectedСities: [CityData] = []
     {
         didSet{
             DispatchQueue.main.async {
@@ -31,21 +31,13 @@ class SearchViewController: UIViewController {
         }
     }
     
-    var selectCity: [String] = []
+    var selectCitySearch: [String] = []
     
-    //var savedCities = UserDefaults.standard.array(forKey: "cities") as? [String] ?? []
-    
-    var cities: [CityData] = [CityData(key: "sds", localizedName: "Lviv")]
-    // TODO:
-    var delegateList: ListViewController?
-    
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setupSearch()
-        
-        
     }
     
     func setupSearch (){
@@ -71,7 +63,7 @@ class SearchViewController: UIViewController {
                      do{
                        let cities = try JSONDecoder().decode([CityData].self, from: data)
                          //print(cities)
-                        self.fETCHcITIES = cities
+                        self.selectedСities = cities
                         //print(self.fETCHcITIES)
                      }catch{
                          print("ERROR_CitySearch==>>\(error)")
@@ -83,14 +75,14 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fETCHcITIES.count
+        return selectedСities.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CitySearchCell") as? CitySearchTableViewCell
         
-        if fETCHcITIES.count != 0 {
-            cell?.cityLabel.text = fETCHcITIES[indexPath.row].localizedName
+        if selectedСities.count != 0 {
+            cell?.cityLabel.text = selectedСities[indexPath.row].localizedName
         }
         //print(" fETCHcITIES ==> \(fETCHcITIES)")
         return cell ?? UITableViewCell()
@@ -100,14 +92,14 @@ extension SearchViewController: UITableViewDataSource {
 extension SearchViewController: UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
         
-        print(searchController.searchBar.text)
+        print(searchController.searchBar.text ?? "searchBar.text Don't work")
         guard let text = searchController.searchBar.text else {return}
         
         let minCountLeters = 2
         if text.count > minCountLeters {
             fetchCitySearch(by: text)
         }else{
-            fETCHcITIES.removeAll()
+            selectedСities.removeAll()
         }
     }
 }
@@ -119,26 +111,26 @@ extension SearchViewController: UITableViewDelegate {
         // TODO:
         //delegate.selectCity(cities[indexPath.row])
     //selectCity.append(fETCHcITIES[indexPath.row].localizedName)
-        let chous = fETCHcITIES[indexPath.row].localizedName
-        print(fETCHcITIES[indexPath.row].localizedName)
+        let chous = selectedСities[indexPath.row].localizedName
+        print(selectedСities[indexPath.row].localizedName)
         
-        selectCity = UserDefaults.standard.object(forKey: "CITY") as? [String] ?? []
-        print("selectCity ==>> \(selectCity)")
+        selectCitySearch = UserDefaults.standard.object(forKey: "CITY") as? [String] ?? []
+        print("selectCity ==>> \(selectCitySearch)")
         
         var flag = 0
         
-        if selectCity.count < 1 {
-            selectCity.append(chous)
+        if selectCitySearch.count < 1 {
+            selectCitySearch.append(chous)
         }
             else{
-            for i in selectCity{
+            for i in selectCitySearch{
                 //print(i)
                 if chous != i{
                     flag += 1
                 }
-                print("flag\(flag)  selectCity.count\(selectCity.count) ")
-                if flag == selectCity.count {
-                    selectCity.append(chous)
+                print("flag\(flag)  selectCity.count\(selectCitySearch.count) ")
+                if flag == selectCitySearch.count {
+                    selectCitySearch.append(chous)
                 }
             }
         }
@@ -149,9 +141,9 @@ extension SearchViewController: UITableViewDelegate {
         
         
         
-        UserDefaults.standard.set(selectCity, forKey: "CITY")
+        UserDefaults.standard.set(selectCitySearch, forKey: "CITY")
         UserDefaults.standard.synchronize()
-        print("2    selectCity ==>> \(selectCity)")
+        print("2    selectCity ==>> \(selectCitySearch)")
         _ = self.navigationController?.popViewController(animated: true)
         
         
@@ -165,24 +157,11 @@ extension SearchViewController: UITableViewDelegate {
         
         
         
-        //print("2    delegateList?.listCity ==>> \(delegateList?.listCity)")
-        
-        
                                                 //        fETCHcITIES.removeAll()
                                                 //        dismiss(animated: true, completion: nil)
         
 //    UserDefaults.standard.set(selectCity, forKey: "CITY")
 //    UserDefaults.standard.synchronize()
-        
-        // Save city
-        // get saved cities:
-    
-        // TODO: if not contains
-        // add new selected city
-    //savedCities.append(fETCHcITIES[indexPath.row].localizedName)
-        // save changes
-    //UserDefaults.standard.set(savedCities, forKey: "cities")
-        
         
         
         // Save city
@@ -194,12 +173,5 @@ extension SearchViewController: UITableViewDelegate {
             // save changes
         //UserDefaults.standard.set(savedCities, forKey: "cities")
             
-        
-        
-        
-        
-        
-        
-        
     }
 }

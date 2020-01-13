@@ -192,12 +192,5 @@ extension SearchViewController: UITableViewDelegate {
             // save changes
         //UserDefaults.standard.set(savedCities, forKey: "cities")
             
-        
-        
-        
-        
-        
-        
-        
     }
 }

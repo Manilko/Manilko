@@ -163,8 +163,6 @@ extension SearchViewController: UITableViewDelegate {
         //present(ListViewController() , animated: true, completion: nil)
         
         
-        
-        
         //print("2    delegateList?.listCity ==>> \(delegateList?.listCity)")
         
         
@@ -194,12 +192,5 @@ extension SearchViewController: UITableViewDelegate {
             // save changes
         //UserDefaults.standard.set(savedCities, forKey: "cities")
             
-        
-        
-        
-        
-        
-        
-        
     }
 }

@@ -176,6 +176,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ufK-DR-qXj">
                                 <rect key="frame" x="16" y="826" width="33" height="30"/>
                                 <state key="normal" title="LINK"/>
+                                <connections>
+                                    <segue destination="1vJ-b2-IUC" kind="show" id="2Ri-ha-tmr"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWt-5s-Lxp">
                                 <rect key="frame" x="367" y="826" width="31" height="30"/>
@@ -221,6 +224,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1043.4782608695652" y="96.428571428571431"/>
+        </scene>
+        <!--Safari View View Controller-->
+        <scene sceneID="ZaY-tp-r6C">
+            <objects>
+                <viewController id="1vJ-b2-IUC" customClass="SafariViewViewController" customModule="constreint" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="w0p-mW-ikv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aN2-MY-ekU">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="aN2-MY-ekU" firstAttribute="leading" secondItem="4IE-8B-y53" secondAttribute="leading" id="74U-0B-ohz"/>
+                            <constraint firstItem="aN2-MY-ekU" firstAttribute="top" secondItem="4IE-8B-y53" secondAttribute="top" id="I9o-v2-dsw"/>
+                            <constraint firstItem="4IE-8B-y53" firstAttribute="trailing" secondItem="aN2-MY-ekU" secondAttribute="trailing" id="Y2C-E2-zsF"/>
+                            <constraint firstItem="4IE-8B-y53" firstAttribute="bottom" secondItem="aN2-MY-ekU" secondAttribute="bottom" id="srX-wW-vus"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4IE-8B-y53"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Oc2-ZM-Ch7"/>
+                    <connections>
+                        <outlet property="safariLink" destination="aN2-MY-ekU" id="ac9-4E-YXi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G1v-QE-7VN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1051" y="817"/>
         </scene>
         <!--List View Controller-->
         <scene sceneID="zKT-GF-mTp">

@@ -25,6 +25,7 @@
 		5C04B2D323852BA00069F944 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C04B2D223852BA00069F944 /* Assets.xcassets */; };
 		5C04B2D623852BA00069F944 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C04B2D423852BA00069F944 /* LaunchScreen.storyboard */; };
 		5C080FF623873A9100845471 /* DailyForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C080FF523873A9100845471 /* DailyForecastTableViewCell.swift */; };
+		5CE82C8523CDB2C70011B2A1 /* SafariViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE82C8423CDB2C70011B2A1 /* SafariViewViewController.swift */; };
 		5CE929FF23C8FED3001A70A4 /* listProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE929FE23C8FED3001A70A4 /* listProtocol.swift */; };
 		5CE9C99B23C07FF8005A7AC7 /* TListCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE9C99A23C07FF8005A7AC7 /* TListCityCell.swift */; };
 		5CECB61923BE070200EC4E6E /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CECB61823BE070200EC4E6E /* ListViewController.swift */; };
@@ -55,6 +56,7 @@
 		5C04B2D523852BA00069F944 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C04B2D723852BA00069F944 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C080FF523873A9100845471 /* DailyForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastTableViewCell.swift; sourceTree = "<group>"; };
+		5CE82C8423CDB2C70011B2A1 /* SafariViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariViewViewController.swift; sourceTree = "<group>"; };
 		5CE929FE23C8FED3001A70A4 /* listProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listProtocol.swift; sourceTree = "<group>"; };
 		5CE9C99A23C07FF8005A7AC7 /* TListCityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TListCityCell.swift; sourceTree = "<group>"; };
 		5CECB61823BE070200EC4E6E /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				5CEBD17D23CC8C3B006B118C /* ListController */,
 				5C038BD62398FC2700C3FBD4 /* SearchControllet */,
 				5C04B2CF23852B9E0069F944 /* Main.storyboard */,
+				5CE82C8423CDB2C70011B2A1 /* SafariViewViewController.swift */,
 				5CABD2B32390482800431DBB /* Models */,
 				5CABD2B2239047FB00431DBB /* Services */,
 				5C04B2D723852BA00069F944 /* Info.plist */,
@@ -248,6 +251,7 @@
 				5CECB61B23BE0D7E00EC4E6E /* CitySearchTableViewCell.swift in Sources */,
 				5C04B2CE23852B9E0069F944 /* ViewController.swift in Sources */,
 				5C00EC26239BB09300FC6F87 /* FiveDayModels.swift in Sources */,
+				5CE82C8523CDB2C70011B2A1 /* SafariViewViewController.swift in Sources */,
 				5C00EC2C239BB19700FC6F87 /* ApiKey.swift in Sources */,
 				5C00EC32239BB75A00FC6F87 /* TwentyHoursServices.swift in Sources */,
 				5CE929FF23C8FED3001A70A4 /* listProtocol.swift in Sources */,

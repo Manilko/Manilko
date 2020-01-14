@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol List {
+protocol ListProtocol {
     func setCity(favoritCity: String)
 }

@@ -177,7 +177,8 @@
                                 <rect key="frame" x="16" y="826" width="33" height="30"/>
                                 <state key="normal" title="LINK"/>
                                 <connections>
-                                    <segue destination="1vJ-b2-IUC" kind="show" id="2Ri-ha-tmr"/>
+                                    <action selector="linkPressSafari:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xie-LB-gqH"/>
+                                    <segue destination="1vJ-b2-IUC" kind="show" identifier="idSafariCont" id="2Ri-ha-tmr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWt-5s-Lxp">
@@ -185,6 +186,15 @@
                                 <state key="normal" title="LIST"/>
                                 <connections>
                                     <segue destination="OI3-Bd-JmU" kind="show" identifier="ide" id="xu2-fR-0HB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkF-CA-fOL">
+                                <rect key="frame" x="153" y="826" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="but:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QCE-gv-Fe6"/>
+                                    <segue destination="1vJ-b2-IUC" kind="show" identifier="id" id="jw5-su-oOD"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -388,4 +398,7 @@
             <point key="canvasLocation" x="133.33333333333334" y="96.428571428571431"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="jw5-su-oOD"/>
+    </inferredMetricsTieBreakers>
 </document>

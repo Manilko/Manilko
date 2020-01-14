@@ -11,7 +11,7 @@ import UIKit
 class ListViewController: UITableViewController {
 
     
-    var delegat : List?
+    var delegat : ListProtocol?
     var choseCity = ""
     
     var listCity : [String] = UserDefaults.standard.object(forKey: "CITY") as? [String] ?? []

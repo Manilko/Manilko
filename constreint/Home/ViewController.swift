@@ -8,11 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController, List {
+class ViewController: UIViewController, ListProtocol {
     
     func setCity(favoritCity: String) {
         self.cityName = favoritCity
         self.choseListCity = favoritCity
+        print("NnNNNNNNNN")
     }
     
     
@@ -22,6 +23,11 @@ class ViewController: UIViewController, List {
     @IBOutlet weak var cityNameMainScreen: UILabel!
     
     //var complitionHandler: ((String) -> ())?
+    var delegatSafariData : SafariPassDataProtocol?
+    
+    
+    
+    
     var delegat : ListViewController?
     var choseListCity : String?{
         didSet{
@@ -90,11 +96,35 @@ class ViewController: UIViewController, List {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
            if segue.identifier == "ide"{
-           let VC: ListViewController = segue.destination as! ListViewController
+           let VC = segue.destination as! ListViewController
            print("SSSSSSSSSSS")
            VC.delegat = self
            }
        }
+    
+    
+    @IBAction func linkPressSafari(_ sender: Any) {
+        let passingName = cityName ?? " "
+        let passingKey = cityKey ?? " "
+        delegatSafariData?.passCityData(name: passingName, key: passingKey)
+        //navigationController?.popViewController(animated: true)
+        print(passingKey)
+        print(passingName)
+    }
+    
+    
+    
+    
+    
+    @IBAction func but(_ sender: Any) {
+        let passingName = cityName ?? " "
+               let passingKey = cityKey ?? " "
+               delegatSafariData?.passCityData(name: passingName, key: passingKey)
+        //navigationController?.popToViewController(SafariViewViewController(),  animated: true)
+         self.navigationController?.popViewController(animated: true)
+               print(passingKey)
+               print(passingName)
+    }
     // MARK: - Actions:
     // linkAction -> open safary by link swift
     

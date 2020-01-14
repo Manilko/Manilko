@@ -7,24 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C00EC24239BB06B00FC6F87 /* CityDataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C00EC23239BB06B00FC6F87 /* CityDataModels.swift */; };
+		5C00EC26239BB09300FC6F87 /* FiveDayModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C00EC25239BB09300FC6F87 /* FiveDayModels.swift */; };
+		5C00EC28239BB0D700FC6F87 /* OneDayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C00EC27239BB0D700FC6F87 /* OneDayModel.swift */; };
+		5C00EC2A239BB0FE00FC6F87 /* TwelveHoursForecastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C00EC29239BB0FE00FC6F87 /* TwelveHoursForecastModel.swift */; };
+		5C00EC2C239BB19700FC6F87 /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C00EC2B239BB19700FC6F87 /* ApiKey.swift */; };
+		5C00EC2E239BB6F500FC6F87 /* OneDayServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C00EC2D239BB6F500FC6F87 /* OneDayServices.swift */; };
+		5C00EC30239BB72600FC6F87 /* FiveDayServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C00EC2F239BB72600FC6F87 /* FiveDayServices.swift */; };
+		5C00EC32239BB75A00FC6F87 /* TwentyHoursServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C00EC31239BB75A00FC6F87 /* TwentyHoursServices.swift */; };
 		5C02B4582387CB8D00CE0C59 /* HourlyForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C02B4572387CB8D00CE0C59 /* HourlyForecastCollectionViewCell.swift */; };
-		5C02B45A238884D400CE0C59 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C02B459238884D400CE0C59 /* File.swift */; };
 		5C02B45E23888A6C00CE0C59 /* SunInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C02B45D23888A6C00CE0C59 /* SunInfoTableViewCell.swift */; };
 		5C02B4602388955A00CE0C59 /* CityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C02B45F2388955A00CE0C59 /* CityService.swift */; };
+		5C038BD82398FCAC00C3FBD4 /* SearchControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C038BD72398FCAC00C3FBD4 /* SearchControllerViewController.swift */; };
 		5C04B2CC23852B9E0069F944 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04B2CB23852B9E0069F944 /* AppDelegate.swift */; };
 		5C04B2CE23852B9E0069F944 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C04B2CD23852B9E0069F944 /* ViewController.swift */; };
 		5C04B2D123852B9E0069F944 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C04B2CF23852B9E0069F944 /* Main.storyboard */; };
 		5C04B2D323852BA00069F944 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C04B2D223852BA00069F944 /* Assets.xcassets */; };
 		5C04B2D623852BA00069F944 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C04B2D423852BA00069F944 /* LaunchScreen.storyboard */; };
 		5C080FF623873A9100845471 /* DailyForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C080FF523873A9100845471 /* DailyForecastTableViewCell.swift */; };
+		5CE82C8523CDB2C70011B2A1 /* SafariViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE82C8423CDB2C70011B2A1 /* SafariViewViewController.swift */; };
+		5CE82C8723CE44C50011B2A1 /* SafariPassDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE82C8623CE44C50011B2A1 /* SafariPassDataProtocol.swift */; };
+		5CE929FF23C8FED3001A70A4 /* listProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE929FE23C8FED3001A70A4 /* listProtocol.swift */; };
+		5CE9C99B23C07FF8005A7AC7 /* TListCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE9C99A23C07FF8005A7AC7 /* TListCityCell.swift */; };
+		5CECB61923BE070200EC4E6E /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CECB61823BE070200EC4E6E /* ListViewController.swift */; };
+		5CECB61B23BE0D7E00EC4E6E /* CitySearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CECB61A23BE0D7E00EC4E6E /* CitySearchTableViewCell.swift */; };
+		5CED2FEA23BFDB4900016B27 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CED2FE923BFDB4900016B27 /* TableViewController.swift */; };
+		5CEFA64923C1C8BB00FBF738 /* SearchDelegatProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEFA64823C1C8BB00FBF738 /* SearchDelegatProtocol.swift */; };
 		5CFE4CD8238D478A00B47FA3 /* DataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE4CD7238D478A00B47FA3 /* DataServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C00EC23239BB06B00FC6F87 /* CityDataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDataModels.swift; sourceTree = "<group>"; };
+		5C00EC25239BB09300FC6F87 /* FiveDayModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDayModels.swift; sourceTree = "<group>"; };
+		5C00EC27239BB0D700FC6F87 /* OneDayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDayModel.swift; sourceTree = "<group>"; };
+		5C00EC29239BB0FE00FC6F87 /* TwelveHoursForecastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwelveHoursForecastModel.swift; sourceTree = "<group>"; };
+		5C00EC2B239BB19700FC6F87 /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
+		5C00EC2D239BB6F500FC6F87 /* OneDayServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneDayServices.swift; sourceTree = "<group>"; };
+		5C00EC2F239BB72600FC6F87 /* FiveDayServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDayServices.swift; sourceTree = "<group>"; };
+		5C00EC31239BB75A00FC6F87 /* TwentyHoursServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwentyHoursServices.swift; sourceTree = "<group>"; };
 		5C02B4572387CB8D00CE0C59 /* HourlyForecastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastCollectionViewCell.swift; sourceTree = "<group>"; };
-		5C02B459238884D400CE0C59 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		5C02B45D23888A6C00CE0C59 /* SunInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunInfoTableViewCell.swift; sourceTree = "<group>"; };
 		5C02B45F2388955A00CE0C59 /* CityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityService.swift; sourceTree = "<group>"; };
+		5C038BD72398FCAC00C3FBD4 /* SearchControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchControllerViewController.swift; sourceTree = "<group>"; };
 		5C04B2C823852B9E0069F944 /* constreint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = constreint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C04B2CB23852B9E0069F944 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C04B2CD23852B9E0069F944 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,6 +57,14 @@
 		5C04B2D523852BA00069F944 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C04B2D723852BA00069F944 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C080FF523873A9100845471 /* DailyForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastTableViewCell.swift; sourceTree = "<group>"; };
+		5CE82C8423CDB2C70011B2A1 /* SafariViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariViewViewController.swift; sourceTree = "<group>"; };
+		5CE82C8623CE44C50011B2A1 /* SafariPassDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariPassDataProtocol.swift; sourceTree = "<group>"; };
+		5CE929FE23C8FED3001A70A4 /* listProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listProtocol.swift; sourceTree = "<group>"; };
+		5CE9C99A23C07FF8005A7AC7 /* TListCityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TListCityCell.swift; sourceTree = "<group>"; };
+		5CECB61823BE070200EC4E6E /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		5CECB61A23BE0D7E00EC4E6E /* CitySearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearchTableViewCell.swift; sourceTree = "<group>"; };
+		5CED2FE923BFDB4900016B27 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		5CEFA64823C1C8BB00FBF738 /* SearchDelegatProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDelegatProtocol.swift; sourceTree = "<group>"; };
 		5CFE4CD7238D478A00B47FA3 /* DataServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -47,6 +79,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C038BD62398FC2700C3FBD4 /* SearchControllet */ = {
+			isa = PBXGroup;
+			children = (
+				5C038BD72398FCAC00C3FBD4 /* SearchControllerViewController.swift */,
+				5CEFA64823C1C8BB00FBF738 /* SearchDelegatProtocol.swift */,
+				5CECB61A23BE0D7E00EC4E6E /* CitySearchTableViewCell.swift */,
+			);
+			path = SearchControllet;
+			sourceTree = "<group>";
+		};
 		5C04B2BF23852B9E0069F944 = {
 			isa = PBXGroup;
 			children = (
@@ -68,7 +110,10 @@
 			children = (
 				5CABD2B1239047C200431DBB /* SupportingFiles */,
 				5CABD2B42390486B00431DBB /* Home */,
+				5CEBD17D23CC8C3B006B118C /* ListController */,
+				5C038BD62398FC2700C3FBD4 /* SearchControllet */,
 				5C04B2CF23852B9E0069F944 /* Main.storyboard */,
+				5CE82C8423CDB2C70011B2A1 /* SafariViewViewController.swift */,
 				5CABD2B32390482800431DBB /* Models */,
 				5CABD2B2239047FB00431DBB /* Services */,
 				5C04B2D723852BA00069F944 /* Info.plist */,
@@ -90,6 +135,9 @@
 			isa = PBXGroup;
 			children = (
 				5C02B45F2388955A00CE0C59 /* CityService.swift */,
+				5C00EC2F239BB72600FC6F87 /* FiveDayServices.swift */,
+				5C00EC2D239BB6F500FC6F87 /* OneDayServices.swift */,
+				5C00EC31239BB75A00FC6F87 /* TwentyHoursServices.swift */,
 				5CFE4CD7238D478A00B47FA3 /* DataServices.swift */,
 			);
 			path = Services;
@@ -98,7 +146,11 @@
 		5CABD2B32390482800431DBB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5C02B459238884D400CE0C59 /* File.swift */,
+				5C00EC2B239BB19700FC6F87 /* ApiKey.swift */,
+				5C00EC29239BB0FE00FC6F87 /* TwelveHoursForecastModel.swift */,
+				5C00EC27239BB0D700FC6F87 /* OneDayModel.swift */,
+				5C00EC25239BB09300FC6F87 /* FiveDayModels.swift */,
+				5C00EC23239BB06B00FC6F87 /* CityDataModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -108,10 +160,22 @@
 			children = (
 				5C04B2CD23852B9E0069F944 /* ViewController.swift */,
 				5C080FF523873A9100845471 /* DailyForecastTableViewCell.swift */,
+				5CE82C8623CE44C50011B2A1 /* SafariPassDataProtocol.swift */,
 				5C02B45D23888A6C00CE0C59 /* SunInfoTableViewCell.swift */,
 				5C02B4572387CB8D00CE0C59 /* HourlyForecastCollectionViewCell.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		5CEBD17D23CC8C3B006B118C /* ListController */ = {
+			isa = PBXGroup;
+			children = (
+				5CECB61823BE070200EC4E6E /* ListViewController.swift */,
+				5CE929FE23C8FED3001A70A4 /* listProtocol.swift */,
+				5CED2FE923BFDB4900016B27 /* TableViewController.swift */,
+				5CE9C99A23C07FF8005A7AC7 /* TListCityCell.swift */,
+			);
+			path = ListController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,12 +249,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C02B45A238884D400CE0C59 /* File.swift in Sources */,
+				5CECB61923BE070200EC4E6E /* ListViewController.swift in Sources */,
+				5C00EC28239BB0D700FC6F87 /* OneDayModel.swift in Sources */,
+				5CECB61B23BE0D7E00EC4E6E /* CitySearchTableViewCell.swift in Sources */,
 				5C04B2CE23852B9E0069F944 /* ViewController.swift in Sources */,
+				5C00EC26239BB09300FC6F87 /* FiveDayModels.swift in Sources */,
+				5CE82C8523CDB2C70011B2A1 /* SafariViewViewController.swift in Sources */,
+				5C00EC2C239BB19700FC6F87 /* ApiKey.swift in Sources */,
+				5C00EC32239BB75A00FC6F87 /* TwentyHoursServices.swift in Sources */,
+				5CE82C8723CE44C50011B2A1 /* SafariPassDataProtocol.swift in Sources */,
+				5CE929FF23C8FED3001A70A4 /* listProtocol.swift in Sources */,
+				5CE9C99B23C07FF8005A7AC7 /* TListCityCell.swift in Sources */,
 				5C02B45E23888A6C00CE0C59 /* SunInfoTableViewCell.swift in Sources */,
 				5C04B2CC23852B9E0069F944 /* AppDelegate.swift in Sources */,
+				5C00EC24239BB06B00FC6F87 /* CityDataModels.swift in Sources */,
+				5C00EC30239BB72600FC6F87 /* FiveDayServices.swift in Sources */,
+				5C00EC2E239BB6F500FC6F87 /* OneDayServices.swift in Sources */,
 				5C02B4582387CB8D00CE0C59 /* HourlyForecastCollectionViewCell.swift in Sources */,
+				5CED2FEA23BFDB4900016B27 /* TableViewController.swift in Sources */,
 				5CFE4CD8238D478A00B47FA3 /* DataServices.swift in Sources */,
+				5CEFA64923C1C8BB00FBF738 /* SearchDelegatProtocol.swift in Sources */,
+				5C038BD82398FCAC00C3FBD4 /* SearchControllerViewController.swift in Sources */,
+				5C00EC2A239BB0FE00FC6F87 /* TwelveHoursForecastModel.swift in Sources */,
 				5C02B4602388955A00CE0C59 /* CityService.swift in Sources */,
 				5C080FF623873A9100845471 /* DailyForecastTableViewCell.swift in Sources */,
 			);

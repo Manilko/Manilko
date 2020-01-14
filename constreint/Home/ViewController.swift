@@ -8,20 +8,44 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ListProtocol {
+    
+    func setCity(favoritCity: String) {
+        self.cityName = favoritCity
+        self.choseListCity = favoritCity
+        print("NnNNNNNNNN")
+    }
+    
     
     @IBOutlet weak var fiveDayForecastMainScreen: UITableView!
     @IBOutlet weak var twentyHouersForecastMainScreen: UICollectionView!
     @IBOutlet weak var temperatureMainScreen: UILabel!
     @IBOutlet weak var cityNameMainScreen: UILabel!
     
+    //var complitionHandler: ((String) -> ())?
+    var delegatSafariData : SafariPassDataProtocol?
+    
+    
+    
+    
+    var delegat : ListViewController?
+    var choseListCity : String?{
+        didSet{
+            
+            fetchCityBy(name: choseListCity ?? "Lviv")
+            reloadInputViews()
+        }
+    }
+                  
+    
+    
     var cityKey : String? {
         didSet {
-          
-            // fetchCityName(by: cityKey ?? " ") - add this function
-            fetchOneDayForecast(by: cityKey)
+            print(cityKey)
+            fetchOneDayForecast(by: cityKey ?? " " )
             fetchFiveDayForecast(by: cityKey ?? " ")
             fetchtwentyHours (by: cityKey ?? " ")
+            
         }
     }
     
@@ -46,7 +70,6 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 self.fiveDayForecastMainScreen.reloadData()
                 self.twentyHouersForecastMainScreen.reloadData()
-                
             }
         }
     }
@@ -54,25 +77,57 @@ class ViewController: UIViewController {
     var fiveDayForecast: [FiveDailyForecast?] = [] {
         didSet {
             DispatchQueue.main.async {
-               
             }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       print("choseListCity ==>> \(choseListCity)")
         
+        fetchCityBy(name: choseListCity ?? "Lviv")
         fiveDayForecastMainScreen.dataSource = self
         fiveDayForecastMainScreen.delegate = self
         twentyHouersForecastMainScreen.delegate = self
         twentyHouersForecastMainScreen.dataSource = self
         
-        // hardcode
-        fetchCityBy(name: "Vinnytsia")
-        
         print("!!!!!!")
        
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if segue.identifier == "ide"{
+           let VC = segue.destination as! ListViewController
+           print("SSSSSSSSSSS")
+           VC.delegat = self
+           }
+       }
+    
+    
+    @IBAction func linkPressSafari(_ sender: Any) {
+        let passingName = cityName ?? " "
+        let passingKey = cityKey ?? " "
+        delegatSafariData?.passCityData(name: passingName, key: passingKey)
+        //navigationController?.popViewController(animated: true)
+        print(passingKey)
+        print(passingName)
+    }
+    
+    
+    
+    
+    
+    @IBAction func but(_ sender: Any) {
+        let passingName = cityName ?? " "
+               let passingKey = cityKey ?? " "
+               delegatSafariData?.passCityData(name: passingName, key: passingKey)
+        //navigationController?.popToViewController(SafariViewViewController(),  animated: true)
+         self.navigationController?.popViewController(animated: true)
+               print(passingKey)
+               print(passingName)
+    }
+    // MARK: - Actions:
+    // linkAction -> open safary by link swift
+    
     
     func fetchCityBy(name: String) {
         
@@ -86,8 +141,11 @@ class ViewController: UIViewController {
                 let cities = try JSONDecoder().decode([CityData].self, from: data)
                 self.cityKey = cities[0].key
                 self.cityName = cities[0].localizedName
+                print(cities[0].localizedName)
+                print("f1")
+                
             } catch {
-                print(error)
+                print("error fetchCityBy ==>> \(error)")
             }
             
             }.resume()
@@ -107,6 +165,7 @@ class ViewController: UIViewController {
             do{
                 let dayForecast = try JSONDecoder().decode(OneDay.self, from: data)
                 self.oneDayForecast = dayForecast.dailyForecasts
+                print("f2")
             }catch{
                 print(error)
             }
@@ -128,6 +187,7 @@ class ViewController: UIViewController {
             do{
                 let fiveForecast = try JSONDecoder().decode(FiveDay.self, from: data)
                 self.fiveDayForecast = fiveForecast.dailyForecasts
+                print("f3")
             }catch{
                 print(error)
             }
@@ -148,6 +208,7 @@ class ViewController: UIViewController {
             do{
                 let twentyHoursForecast = try JSONDecoder().decode([TwelveHoursForecast].self, from: data)
                 self.twentyHours = twentyHoursForecast
+                print("f4")
             }catch{
                 print(error)
             }
@@ -160,6 +221,7 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
+        print("ex1")
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0{
@@ -216,6 +278,7 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("ex2")
         return twentyHours.count
     }
     
@@ -228,4 +291,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
         
         return houersInformationCell
     }
+    
+   
 }

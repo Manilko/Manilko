@@ -11,7 +11,7 @@ import UIKit
 class ListViewController: UITableViewController {
 
     
-    var delegat : List?
+    var delegat : ListProtocol?
     var choseCity = ""
     
     var listCity : [String] = UserDefaults.standard.object(forKey: "CITY") as? [String] ?? []
@@ -19,21 +19,11 @@ class ListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //tableView.reloadData()
 
         print(listCity)
         
     }
     
-    
-    // Save city
-        // get saved cities:
-    //var savedCities = UserDefaults.standard.array(forKey: "cities") as? [String] ?? []
-        // TODO: if not contains
-        // add new selected city
-    //savedCities.append(cities[indexPath.row].localizedName)
-        // save changes
-    //UserDefaults.standard.set(savedCities, forKey: "cities")
     
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -77,12 +67,12 @@ class ListViewController: UITableViewController {
     }
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "listIdCell", for: indexPath) as! TListCityCell
+        let listCitycell = tableView.dequeueReusableCell(withIdentifier: "listIdCell", for: indexPath) as! ListCityCell
         
         if listCity.count != 0{
-            cell.listCityLabel.text = listCity[indexPath.row]
+            listCitycell.listCityLabel.text = listCity[indexPath.row]
         }
-        return cell
+        return listCitycell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

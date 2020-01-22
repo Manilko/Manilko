@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, List {
+class ViewController: UIViewController, ListProtocol {
     
     func setCity(favoritCity: String) {
         self.cityName = favoritCity
@@ -35,7 +35,7 @@ class ViewController: UIViewController, List {
     
     var cityKey : String? {
         didSet {
-            print(cityKey)
+//            print(cityKey)
             fetchOneDayForecast(by: cityKey ?? " " )
             fetchFiveDayForecast(by: cityKey ?? " ")
             fetchtwentyHours (by: cityKey ?? " ")
@@ -71,6 +71,7 @@ class ViewController: UIViewController, List {
     var fiveDayForecast: [FiveDailyForecast?] = [] {
         didSet {
             DispatchQueue.main.async {
+                //self.fiveDayForecastMainScreen.reloadData()
             }
         }
     }
@@ -85,18 +86,27 @@ class ViewController: UIViewController, List {
         twentyHouersForecastMainScreen.delegate = self
         twentyHouersForecastMainScreen.dataSource = self
         
-        print("!!!!!!")
+//        print("!!!!!!")
        
     }
+    
+    
+    @IBAction func safariLink(_ sender: Any) {
+        //performSegue(withIdentifier: "safariLinkId", sender: self)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-           if segue.identifier == "ide"{
-           let VC: ListViewController = segue.destination as! ListViewController
-           print("SSSSSSSSSSS")
-           VC.delegat = self
+        
+           if segue.identifier == "listViewSegue"{
+           let controller: ListViewController = segue.destination as! ListViewController
+           controller.delegat = self
            }
+            
+            if segue.identifier == "safariLinkId" {
+                (segue.destination as! SafariLinkViewController).cityKey = cityKey ?? ""
+                (segue.destination as! SafariLinkViewController).cityName = cityName ?? ""
+            }
        }
-    // MARK: - Actions:
-    // linkAction -> open safary by link swift
     
     
     func fetchCityBy(name: String) {
@@ -117,7 +127,6 @@ class ViewController: UIViewController, List {
             } catch {
                 print("error fetchCityBy ==>> \(error)")
             }
-            
             }.resume()
         
         
@@ -139,7 +148,6 @@ class ViewController: UIViewController, List {
             }catch{
                 print(error)
             }
-            
             }.resume()
     }
     
@@ -156,6 +164,7 @@ class ViewController: UIViewController, List {
             
             do{
                 let fiveForecast = try JSONDecoder().decode(FiveDay.self, from: data)
+                print(fiveForecast)
                 self.fiveDayForecast = fiveForecast.dailyForecasts
                 print("f3")
             }catch{
@@ -191,7 +200,7 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
-        print("ex1")
+
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0{
@@ -214,14 +223,19 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
         if indexPath.section % 2 == 0 {
             
             var dayInformationInFiveForecastCell = fiveDayForecastMainScreen.dequeueReusableCell(withIdentifier: "idDayInformationInFiveForecastCell") as! DailyForecastTableViewCell
-            
+            print("@@@@@@@@@@@@")
             if dayInformationInFiveForecastCell == nil{
                 dayInformationInFiveForecastCell = UITableViewCell.init(style: .default, reuseIdentifier: "idDayInformationInFiveForecastCell") as! DailyForecastTableViewCell
             }
-            print("@@@@@@@@@@@@")
+            
             dayInformationInFiveForecastCell.dayInFiveDayForecast.text = dataDay(isoDate: self.fiveDayForecast[indexPath.row]?.date ?? " ")
             dayInformationInFiveForecastCell.minTemprInFiveDayForecast.text = String(self.fiveDayForecast[indexPath.row]!.temperature.maximum.value)
             dayInformationInFiveForecastCell.maxTemprInFiveDayForecast.text = String(self.fiveDayForecast[indexPath.row]!.temperature.minimum.value)
+//
+//            dayInformationInFiveForecastCell.dayInFiveDayForecast.text = "aaaaaaa"
+//            dayInformationInFiveForecastCell.minTemprInFiveDayForecast.text = "ccccc"
+//            dayInformationInFiveForecastCell.maxTemprInFiveDayForecast.text = "bbbb"
+            
             
             return dayInformationInFiveForecastCell
         } else {

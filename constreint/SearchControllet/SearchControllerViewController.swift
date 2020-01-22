@@ -108,9 +108,7 @@ extension SearchViewController: UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {  //##!!!!!!!!
-        // TODO:
-        //delegate.selectCity(cities[indexPath.row])
-    //selectCity.append(fETCHcITIES[indexPath.row].localizedName)
+        
         let chous = selectedСities[indexPath.row].localizedName
         print(selectedСities[indexPath.row].localizedName)
         
@@ -134,44 +132,12 @@ extension SearchViewController: UITableViewDelegate {
                 }
             }
         }
-        //navigationController?.pushViewController(ListViewController(), animated: true)
-        //present(ListViewController() , animated: true, completion: nil)
-        
-        
-        
-        
         
         UserDefaults.standard.set(selectCitySearch, forKey: "CITY")
         UserDefaults.standard.synchronize()
         print("2    selectCity ==>> \(selectCitySearch)")
         _ = self.navigationController?.popViewController(animated: true)
         
-        
-        
-        //navigationController?.pushViewController(TableViewController(), animated: true)
-        //present(TableViewController() , animated: true, completion: nil)
-        
-        //navigationController?.pushViewController(ListViewController(), animated: true)
-        //present(ListViewController() , animated: true, completion: nil)
-        
-        
-        
-        
-                                                //        fETCHcITIES.removeAll()
-                                                //        dismiss(animated: true, completion: nil)
-        
-//    UserDefaults.standard.set(selectCity, forKey: "CITY")
-//    UserDefaults.standard.synchronize()
-        
-        
-        // Save city
-            // get saved cities:
-        //var savedCities = UserDefaults.standard.array(forKey: "cities") as? [String] ?? []
-            // TODO: if not contains
-            // add new selected city
-        //savedCities.append(cities[indexPath.row].localizedName)
-            // save changes
-        //UserDefaults.standard.set(savedCities, forKey: "cities")
-            
+      
     }
 }

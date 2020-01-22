@@ -11,8 +11,16 @@ import UIKit
 class ViewController: UIViewController, ListProtocol {
     
     func setCity(favoritCity: String) {
-        self.cityName = favoritCity
-        self.choseListCity = favoritCity
+        
+        fetchCityBy(name: favoritCity) { city in
+            DispatchQueue.main.async {
+                self.cityNameMainScreen.text = city[0].localizedName
+                self.cityKey = city[0].key
+                self.fetchOneDayForecast(by: city[0].key )
+                self.fetchFiveDayForecast(by: city[0].key)
+                self.fetchtwentyHours (by: city[0].key)
+            }
+        }
     }
     
     
@@ -21,8 +29,12 @@ class ViewController: UIViewController, ListProtocol {
     @IBOutlet weak var temperatureMainScreen: UILabel!
     @IBOutlet weak var cityNameMainScreen: UILabel!
     
-    //var complitionHandler: ((String) -> ())?
     var delegat : ListViewController?
+<<<<<<< HEAD
+  
+    var cityKey = ""
+
+=======
     var choseListCity : String?{
         didSet{
             
@@ -35,7 +47,7 @@ class ViewController: UIViewController, ListProtocol {
     
     var cityKey : String? {
         didSet {
-            print(cityKey)
+//            print(cityKey)
             fetchOneDayForecast(by: cityKey ?? " " )
             fetchFiveDayForecast(by: cityKey ?? " ")
             fetchtwentyHours (by: cityKey ?? " ")
@@ -50,6 +62,7 @@ class ViewController: UIViewController, ListProtocol {
             }
         }
     }
+>>>>>>> 8cc3251dd6bdaa7a3abacc9621821abd1053153f
     
     var oneDayForecast: [OneDailyForecast] = [] {
         didSet {
@@ -71,42 +84,89 @@ class ViewController: UIViewController, ListProtocol {
     var fiveDayForecast: [FiveDailyForecast?] = [] {
         didSet {
             DispatchQueue.main.async {
+                //self.fiveDayForecastMainScreen.reloadData()
             }
         }
     }
     
+    var start : [String] = UserDefaults.standard.object(forKey: "CITY") as? [String] ?? []
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+              self.navigationController?.setNavigationBarHidden(true, animated: animated) // <<
+        }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+             self.navigationController?.setNavigationBarHidden(false, animated: animated); // <<
+             super.viewWillDisappear(animated)
+        }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       print("choseListCity ==>> \(choseListCity)")
+     
+        if start.count == 0{
+            fetchCityBy(name: "Vinnitsia") { city in
+                DispatchQueue.main.async {
+                    print("start.count == 0")
+                }
+                
+            }
+        }else{
+            fetchCityBy(name:  start[0]) { city in
+                DispatchQueue.main.async {
+                    self.cityNameMainScreen.text = city[0].localizedName
+                    self.cityKey = city[0].key
+                    self.fetchOneDayForecast(by: city[0].key )
+                    self.fetchFiveDayForecast(by: city[0].key)
+                    self.fetchtwentyHours (by: city[0].key)
+                }
+                
+            }
+        }
         
-        fetchCityBy(name: choseListCity ?? "Lviv")
+        
         fiveDayForecastMainScreen.dataSource = self
         fiveDayForecastMainScreen.delegate = self
         twentyHouersForecastMainScreen.delegate = self
         twentyHouersForecastMainScreen.dataSource = self
         
-        print("!!!!!!")
+//        print("!!!!!!")
        
     }
+    
+    
+<<<<<<< HEAD
+    
+    
+=======
+>>>>>>> 8cc3251dd6bdaa7a3abacc9621821abd1053153f
+    @IBAction func safariLink(_ sender: Any) {
+        //performSegue(withIdentifier: "safariLinkId", sender: self)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-           if segue.identifier == "ide"{
-           let VC: ListViewController = segue.destination as! ListViewController
-           print("SSSSSSSSSSS")
-           VC.delegat = self
+        
+           if segue.identifier == "listViewSegue"{
+           let controller: ListViewController = segue.destination as! ListViewController
+           controller.delegat = self
            }
+            
+            if segue.identifier == "safariLinkId" {
+<<<<<<< HEAD
+                (segue.destination as! SafariLinkViewController).cityKey = cityKey
+                (segue.destination as! SafariLinkViewController).cityName = self.cityNameMainScreen.text
+=======
+                (segue.destination as! SafariLinkViewController).cityKey = cityKey ?? ""
+                (segue.destination as! SafariLinkViewController).cityName = cityName ?? ""
+>>>>>>> 8cc3251dd6bdaa7a3abacc9621821abd1053153f
+            }
        }
-    // MARK: - Actions:
-    // linkAction -> open safary by link swift
     
     
-    func fetchCityBy(name: String) {
-        
-        guard let url = URL(string: "https://dataservice.accuweather.com/locations/v1/cities/search?q=\(name)&apikey=\(apiKey)") else { return }
-        
-        let session = URLSession.shared
-        session.dataTask(with: url) { (data, response, eror) in
-            guard  let data = data else { return }
     
+<<<<<<< HEAD
+=======
             do {
                 let cities = try JSONDecoder().decode([CityData].self, from: data)
                 self.cityKey = cities[0].key
@@ -117,11 +177,11 @@ class ViewController: UIViewController, ListProtocol {
             } catch {
                 print("error fetchCityBy ==>> \(error)")
             }
-            
             }.resume()
         
         
     }
+>>>>>>> 8cc3251dd6bdaa7a3abacc9621821abd1053153f
     
     
     func fetchOneDayForecast(by cityKey: String?) {
@@ -139,7 +199,6 @@ class ViewController: UIViewController, ListProtocol {
             }catch{
                 print(error)
             }
-            
             }.resume()
     }
     
@@ -156,6 +215,7 @@ class ViewController: UIViewController, ListProtocol {
             
             do{
                 let fiveForecast = try JSONDecoder().decode(FiveDay.self, from: data)
+                print(fiveForecast)
                 self.fiveDayForecast = fiveForecast.dailyForecasts
                 print("f3")
             }catch{
@@ -191,7 +251,9 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
-        print("ex1")
+
+<<<<<<< HEAD
+=======
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0{
@@ -199,7 +261,15 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
         }else{
             return "Sun Information"
         }
+>>>>>>> 8cc3251dd6bdaa7a3abacc9621821abd1053153f
     }
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        if section == 0{
+//            return "Day Information"
+//        }else{
+//            return "Sun Information"
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
@@ -214,14 +284,37 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
         if indexPath.section % 2 == 0 {
             
             var dayInformationInFiveForecastCell = fiveDayForecastMainScreen.dequeueReusableCell(withIdentifier: "idDayInformationInFiveForecastCell") as! DailyForecastTableViewCell
-            
+            print("@@@@@@@@@@@@")
             if dayInformationInFiveForecastCell == nil{
                 dayInformationInFiveForecastCell = UITableViewCell.init(style: .default, reuseIdentifier: "idDayInformationInFiveForecastCell") as! DailyForecastTableViewCell
             }
+            
+<<<<<<< HEAD
             print("@@@@@@@@@@@@")
+            
+            if indexPath.row == 0{
+                dayInformationInFiveForecastCell.dayInFiveDayForecast.text = "Today"
+            }else{
+                dayInformationInFiveForecastCell.dayInFiveDayForecast.text = dataDay(isoDate: self.fiveDayForecast[indexPath.row]?.date ?? " ")
+            }
+            
+=======
             dayInformationInFiveForecastCell.dayInFiveDayForecast.text = dataDay(isoDate: self.fiveDayForecast[indexPath.row]?.date ?? " ")
+>>>>>>> 8cc3251dd6bdaa7a3abacc9621821abd1053153f
             dayInformationInFiveForecastCell.minTemprInFiveDayForecast.text = String(self.fiveDayForecast[indexPath.row]!.temperature.maximum.value)
             dayInformationInFiveForecastCell.maxTemprInFiveDayForecast.text = String(self.fiveDayForecast[indexPath.row]!.temperature.minimum.value)
+//
+//            dayInformationInFiveForecastCell.dayInFiveDayForecast.text = "aaaaaaa"
+//            dayInformationInFiveForecastCell.minTemprInFiveDayForecast.text = "ccccc"
+//            dayInformationInFiveForecastCell.maxTemprInFiveDayForecast.text = "bbbb"
+            
+            
+            tableView.backgroundColor = .clear
+            dayInformationInFiveForecastCell.backgroundColor = .clear
+            tableView.tableFooterView = UIView()
+            
+            
+            
             
             return dayInformationInFiveForecastCell
         } else {
@@ -241,6 +334,12 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
             sunInformationCell.sunSetName.text = "sun set"
             sunInformationCell.sunSetTime.text = "\(sunSetHours):\(sunSetMinutes)"
             
+            tableView.backgroundColor = .clear
+            sunInformationCell.backgroundColor = .clear
+            tableView.tableFooterView = UIView()
+            
+            
+            
             return sunInformationCell
         }
     }
@@ -256,8 +355,19 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
         
         let houersInformationCell = twentyHouersForecastMainScreen.dequeueReusableCell(withReuseIdentifier: "idHouersInformationCell", for: indexPath) as! HourlyForecastCollectionViewCell
         
-        houersInformationCell.namberHouerInTwentyForecast.text = String(hours(isoDate: String(self.twentyHours[indexPath.row]!.dateTime)))
+        if indexPath.row == 0{
+            houersInformationCell.namberHouerInTwentyForecast.text = "Now"
+        }else{
+            houersInformationCell.namberHouerInTwentyForecast.text = String(hours(isoDate: String(self.twentyHours[indexPath.row]!.dateTime)))
+        }
+        
         houersInformationCell.temperatureInTwentyForecast.text = String(self.twentyHours[indexPath.row]!.temperature.value )
+        
+        collectionView.backgroundColor = .clear
+        houersInformationCell.backgroundColor = .clear
+        //collectionView.collectionFooterView = UIView()
+        
+        
         
         return houersInformationCell
     }

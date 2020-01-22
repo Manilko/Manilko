@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+
 //func fetchOneDayForecast(by cityKey: String?) {
 //
 //    guard  let cityKey = cityKey, let url = URL(string: "https://dataservice.accuweather.com/forecasts/v1/daily/1day/\(cityKey)?apikey=\(apiKey)&details=true&metric=true") else{ return }

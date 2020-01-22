@@ -25,10 +25,7 @@
 		5C04B2D323852BA00069F944 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C04B2D223852BA00069F944 /* Assets.xcassets */; };
 		5C04B2D623852BA00069F944 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C04B2D423852BA00069F944 /* LaunchScreen.storyboard */; };
 		5C080FF623873A9100845471 /* DailyForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C080FF523873A9100845471 /* DailyForecastTableViewCell.swift */; };
-<<<<<<< HEAD
 		5CE7113423D8D78F008A114D /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE7113323D8D78F008A114D /* LaunchViewController.swift */; };
-=======
->>>>>>> 8cc3251dd6bdaa7a3abacc9621821abd1053153f
 		5CE8036623CF9744007B46C2 /* SafariLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE8036523CF9744007B46C2 /* SafariLinkViewController.swift */; };
 		5CE929FF23C8FED3001A70A4 /* listProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE929FE23C8FED3001A70A4 /* listProtocol.swift */; };
 		5CE9C99B23C07FF8005A7AC7 /* ListCityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE9C99A23C07FF8005A7AC7 /* ListCityCell.swift */; };
@@ -61,10 +58,7 @@
 		5C04B2D523852BA00069F944 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C04B2D723852BA00069F944 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C080FF523873A9100845471 /* DailyForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastTableViewCell.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		5CE7113323D8D78F008A114D /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
-=======
->>>>>>> 8cc3251dd6bdaa7a3abacc9621821abd1053153f
 		5CE8036523CF9744007B46C2 /* SafariLinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariLinkViewController.swift; sourceTree = "<group>"; };
 		5CE929FE23C8FED3001A70A4 /* listProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listProtocol.swift; sourceTree = "<group>"; };
 		5CE9C99A23C07FF8005A7AC7 /* ListCityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCityCell.swift; sourceTree = "<group>"; };

@@ -21,11 +21,8 @@ class ListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-<<<<<<< HEAD
         
         //self.navigationController?.setNavigationBarHidden(false, animated: false)
-=======
->>>>>>> 8cc3251dd6bdaa7a3abacc9621821abd1053153f
 
         print(listCity)
         

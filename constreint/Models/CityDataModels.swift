@@ -11,7 +11,7 @@ import Foundation
 struct CityData: Decodable {
     let key: String
     let localizedName: String
-    //"Key": "1-326175_1_AL"
+    
     enum CodingKeys: String, CodingKey {
         case key = "Key"
         case localizedName = "LocalizedName"

@@ -11,29 +11,32 @@ import UIKit
 class ListViewController: UITableViewController {
 
     
-    var delegat : List?
+    var delegat : ListProtocol?
     var choseCity = ""
+    
+    var A = ""
     
     var listCity : [String] = UserDefaults.standard.object(forKey: "CITY") as? [String] ?? []
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //tableView.reloadData()
+        
+        //self.navigationController?.setNavigationBarHidden(false, animated: false)
 
         print(listCity)
         
+        let image = UIImage(named: "39142-priroda-poslesvechenie-den-atmosfera-nebo-1125x2436")
+        let imageView = UIImageView(image: image)
+        tableView.backgroundView = imageView
+        //imageView.alpha = 0.2
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController!.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.view.backgroundColor = UIColor.clear
+        
     }
     
-    
-    // Save city
-        // get saved cities:
-    //var savedCities = UserDefaults.standard.array(forKey: "cities") as? [String] ?? []
-        // TODO: if not contains
-        // add new selected city
-    //savedCities.append(cities[indexPath.row].localizedName)
-        // save changes
-    //UserDefaults.standard.set(savedCities, forKey: "cities")
     
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -77,12 +80,17 @@ class ListViewController: UITableViewController {
     }
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "listIdCell", for: indexPath) as! TListCityCell
+        let listCitycell = tableView.dequeueReusableCell(withIdentifier: "listIdCell", for: indexPath) as! ListCityCell
         
         if listCity.count != 0{
-            cell.listCityLabel.text = listCity[indexPath.row]
+            listCitycell.listCityLabel.text = listCity[indexPath.row]
         }
-        return cell
+        
+        tableView.backgroundColor = .clear
+        listCitycell.backgroundColor = .clear
+        tableView.tableFooterView = UIView()
+        
+        return listCitycell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -93,5 +101,48 @@ class ListViewController: UITableViewController {
         delegat?.setCity(favoritCity: choseCity)
     }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "id"{
+            let controller = segue.destination as! SearchViewController
+            controller.complition = { info in
+                self.A = info
+                
+                var flag = 0
+                
+                if self.listCity.count < 1 {
+                    self.listCity.append(info)
+                }else{
+                    for i in self.listCity{
+                                //print(i)
+                                if info != i{
+                                    flag += 1
+                                }
+                        print("flag\(flag)  selectCity.count\(self.listCity.count) ")
+                        if flag == self.listCity.count {
+                            self.listCity.append(info)
+                                }
+                            }
+                        }
+                UserDefaults.standard.set(self.listCity, forKey: "CITY")
+                UserDefaults.standard.synchronize()
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    
+    
 }
 
+//extension ListViewController {
+//    @IBInspectable var backgroundImage: UIImage? {
+//        get {
+//            return nil
+//        }
+//        set {
+//            backgroundImage = UIImageView(image: newValue)
+//
+//        }
+//    }
+//}

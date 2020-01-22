@@ -13,14 +13,12 @@ class CitySearchTableViewCell: UITableViewCell {
     @IBOutlet weak var cityLabel: UILabel!
 }
 
-// TODO: to the bottom
-
-
-
 
 class SearchViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    
+    var complition: ((String)->())?
     
     var selectedСities: [CityData] = []
     {
@@ -37,7 +35,19 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
+        let image = UIImage(named: "39142-priroda-poslesvechenie-den-atmosfera-nebo-1125x2436")
+        let imageView = UIImageView(image: image)
+        tableView.backgroundView = imageView
+        //imageView.alpha = 0.2
         self.setupSearch()
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+               navigationController!.navigationBar.shadowImage = UIImage()
+               navigationController?.navigationBar.isTranslucent = true
+               navigationController?.view.backgroundColor = UIColor.clear
+                
     }
     
     func setupSearch (){
@@ -46,30 +56,25 @@ class SearchViewController: UIViewController {
         search.obscuresBackgroundDuringPresentation = false
         search.searchResultsUpdater = self
         
+
         navigationItem.searchController = search
         navigationItem.hidesSearchBarWhenScrolling = false
-    
-    }
-    
-    
-    func fetchCitySearch(by leters: String){
         
-         guard let url = URL(string: "http://dataservice.accuweather.com/locations/v1/cities/autocomplete?q=\(leters)&apikey=\(apiKey)") else { return }
-                 
-                 let session = URLSession.shared
-                 session.dataTask(with: url) { (data, response, eror) in
-                     guard  let data = data else { return }
-             
-                     do{
-                       let cities = try JSONDecoder().decode([CityData].self, from: data)
-                         //print(cities)
-                        self.selectedСities = cities
-                        //print(self.fETCHcITIES)
-                     }catch{
-                         print("ERROR_CitySearch==>>\(error)")
-                     }
-                     }.resume()
+        
+        
+        
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController!.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.view.backgroundColor = UIColor.clear
+
+    
+        
     }
+    
+    
+    
 }
 
 extension SearchViewController: UITableViewDataSource {
@@ -85,6 +90,11 @@ extension SearchViewController: UITableViewDataSource {
             cell?.cityLabel.text = selectedСities[indexPath.row].localizedName
         }
         //print(" fETCHcITIES ==> \(fETCHcITIES)")
+        
+        tableView.backgroundColor = .clear
+        cell?.backgroundColor = .clear
+        tableView.tableFooterView = UIView()
+        
         return cell ?? UITableViewCell()
     }
 }
@@ -97,7 +107,9 @@ extension SearchViewController: UISearchResultsUpdating{
         
         let minCountLeters = 2
         if text.count > minCountLeters {
-            fetchCitySearch(by: text)
+            fetchCitySearch(by: text) { data in
+                self.selectedСities = data
+            }
         }else{
             selectedСities.removeAll()
         }
@@ -107,71 +119,14 @@ extension SearchViewController: UISearchResultsUpdating{
 extension SearchViewController: UITableViewDelegate {
     
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {  //##!!!!!!!!
-        // TODO:
-        //delegate.selectCity(cities[indexPath.row])
-    //selectCity.append(fETCHcITIES[indexPath.row].localizedName)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let chous = selectedСities[indexPath.row].localizedName
         print(selectedСities[indexPath.row].localizedName)
+        complition!(chous)
         
-        selectCitySearch = UserDefaults.standard.object(forKey: "CITY") as? [String] ?? []
-        print("selectCity ==>> \(selectCitySearch)")
-        
-        var flag = 0
-        
-        if selectCitySearch.count < 1 {
-            selectCitySearch.append(chous)
-        }
-            else{
-            for i in selectCitySearch{
-                //print(i)
-                if chous != i{
-                    flag += 1
-                }
-                print("flag\(flag)  selectCity.count\(selectCitySearch.count) ")
-                if flag == selectCitySearch.count {
-                    selectCitySearch.append(chous)
-                }
-            }
-        }
-        //navigationController?.pushViewController(ListViewController(), animated: true)
-        //present(ListViewController() , animated: true, completion: nil)
-        
-        
-        
-        
-        
-        UserDefaults.standard.set(selectCitySearch, forKey: "CITY")
-        UserDefaults.standard.synchronize()
-        print("2    selectCity ==>> \(selectCitySearch)")
         _ = self.navigationController?.popViewController(animated: true)
         
-        
-        
-        //navigationController?.pushViewController(TableViewController(), animated: true)
-        //present(TableViewController() , animated: true, completion: nil)
-        
-        //navigationController?.pushViewController(ListViewController(), animated: true)
-        //present(ListViewController() , animated: true, completion: nil)
-        
-        
-        
-        
-                                                //        fETCHcITIES.removeAll()
-                                                //        dismiss(animated: true, completion: nil)
-        
-//    UserDefaults.standard.set(selectCity, forKey: "CITY")
-//    UserDefaults.standard.synchronize()
-        
-        
-        // Save city
-            // get saved cities:
-        //var savedCities = UserDefaults.standard.array(forKey: "cities") as? [String] ?? []
-            // TODO: if not contains
-            // add new selected city
-        //savedCities.append(cities[indexPath.row].localizedName)
-            // save changes
-        //UserDefaults.standard.set(savedCities, forKey: "cities")
-            
+      
     }
 }

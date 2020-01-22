@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-// todo rename data --- date
+
 func dataDay(isoDate: String) -> String{
     
     let dateFormatter = DateFormatter()

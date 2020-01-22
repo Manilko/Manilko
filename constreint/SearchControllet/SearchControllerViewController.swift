@@ -119,12 +119,43 @@ extension SearchViewController: UISearchResultsUpdating{
 extension SearchViewController: UITableViewDelegate {
     
     
+<<<<<<< HEAD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+=======
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {  //##!!!!!!!!
+>>>>>>> 8cc3251dd6bdaa7a3abacc9621821abd1053153f
         
         let chous = selectedСities[indexPath.row].localizedName
         print(selectedСities[indexPath.row].localizedName)
         complition!(chous)
         
+<<<<<<< HEAD
+=======
+        selectCitySearch = UserDefaults.standard.object(forKey: "CITY") as? [String] ?? []
+        print("selectCity ==>> \(selectCitySearch)")
+        
+        var flag = 0
+        
+        if selectCitySearch.count < 1 {
+            selectCitySearch.append(chous)
+        }
+            else{
+            for i in selectCitySearch{
+                //print(i)
+                if chous != i{
+                    flag += 1
+                }
+                print("flag\(flag)  selectCity.count\(selectCitySearch.count) ")
+                if flag == selectCitySearch.count {
+                    selectCitySearch.append(chous)
+                }
+            }
+        }
+        
+        UserDefaults.standard.set(selectCitySearch, forKey: "CITY")
+        UserDefaults.standard.synchronize()
+        print("2    selectCity ==>> \(selectCitySearch)")
+>>>>>>> 8cc3251dd6bdaa7a3abacc9621821abd1053153f
         _ = self.navigationController?.popViewController(animated: true)
         
       

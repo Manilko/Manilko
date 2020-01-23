@@ -100,6 +100,7 @@ class ViewController: UIViewController, ListProtocol {
         twentyHouersForecastMainScreen.delegate = self
         twentyHouersForecastMainScreen.dataSource = self
         
+        
 //        print("!!!!!!")
        
     }
@@ -123,6 +124,8 @@ class ViewController: UIViewController, ListProtocol {
                 (segue.destination as! SafariLinkViewController).cityName = self.cityNameMainScreen.text
             }
        }
+    
+    
     
     
     
@@ -192,6 +195,11 @@ class ViewController: UIViewController, ListProtocol {
 
 extension ViewController : UITableViewDataSource, UITableViewDelegate{
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        fiveDayForecastMainScreen.deselectRow(at: indexPath, animated: true)
+        
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
 
@@ -213,6 +221,8 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
         
         if indexPath.section % 2 == 0 {
             

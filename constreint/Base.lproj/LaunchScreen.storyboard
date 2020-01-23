@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
+        <deployment version="4864" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="39142-priroda-poslesvechenie-den-atmosfera-nebo-1125x2436" translatesAutoresizingMaskIntoConstraints="NO" id="JVe-ou-3Gk">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="39073-dnevnoe_vremya-spokojstvie-atmosfera-zakat-peyzash-1125x2436" translatesAutoresizingMaskIntoConstraints="NO" id="JVe-ou-3Gk">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="weather app" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oic-o4-NjD">
                                 <rect key="frame" x="88" y="421" width="238" height="54"/>
@@ -28,12 +28,12 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="JVe-ou-3Gk" secondAttribute="bottom" id="4sc-b2-2Vc"/>
+                            <constraint firstAttribute="trailing" secondItem="JVe-ou-3Gk" secondAttribute="trailing" id="6Xv-gu-6J8"/>
+                            <constraint firstAttribute="bottom" secondItem="JVe-ou-3Gk" secondAttribute="bottom" id="Bf8-qa-SEA"/>
                             <constraint firstItem="Oic-o4-NjD" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="IIo-Vl-ncd"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JVe-ou-3Gk" secondAttribute="trailing" id="ZAW-DN-tzY"/>
+                            <constraint firstItem="JVe-ou-3Gk" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Obz-0U-hW8"/>
+                            <constraint firstItem="JVe-ou-3Gk" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Xvn-OD-F3v"/>
                             <constraint firstItem="Oic-o4-NjD" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="cUN-Tf-XaS"/>
-                            <constraint firstItem="JVe-ou-3Gk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="wQ3-vt-e8H"/>
-                            <constraint firstItem="JVe-ou-3Gk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wQe-id-OTy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -44,6 +44,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="39142-priroda-poslesvechenie-den-atmosfera-nebo-1125x2436" width="1125" height="2436"/>
+        <image name="39073-dnevnoe_vremya-spokojstvie-atmosfera-zakat-peyzash-1125x2436" width="1125" height="2436"/>
     </resources>
 </document>

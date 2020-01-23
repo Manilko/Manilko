@@ -115,6 +115,7 @@
 				5CEBD17D23CC8C3B006B118C /* ListController */,
 				5C038BD62398FC2700C3FBD4 /* SearchControllet */,
 				5C04B2CF23852B9E0069F944 /* Main.storyboard */,
+				5C04B2D423852BA00069F944 /* LaunchScreen.storyboard */,
 				5CE8036523CF9744007B46C2 /* SafariLinkViewController.swift */,
 				5CABD2B32390482800431DBB /* Models */,
 				5CABD2B2239047FB00431DBB /* Services */,
@@ -128,7 +129,6 @@
 			children = (
 				5C04B2CB23852B9E0069F944 /* AppDelegate.swift */,
 				5C04B2D223852BA00069F944 /* Assets.xcassets */,
-				5C04B2D423852BA00069F944 /* LaunchScreen.storyboard */,
 				5CE7113323D8D78F008A114D /* LaunchViewController.swift */,
 			);
 			path = SupportingFiles;

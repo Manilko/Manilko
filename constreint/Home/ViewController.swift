@@ -24,8 +24,12 @@ class ViewController: UIViewController, ListProtocol {
                 fetchOneDayForecast(by: city.first?.key) { forecasts in
                     self.oneDayForecast = forecasts
                 }
-                self.fetchFiveDayForecast(by: city.first?.key ?? "")
-                self.fetchtwentyHours (by: city.first?.key ?? "")
+                fetchFiveDayForecast(by: city.first?.key ?? "") { fiveForecast in
+                    self.fiveDayForecast = fiveForecast
+                }
+                fetchtwentyHours (by: city.first?.key ?? "") { twelveForecast in
+                    self.twentyHours = twelveForecast
+                }
             }
         }
     }
@@ -75,10 +79,14 @@ class ViewController: UIViewController, ListProtocol {
                    fetchOneDayForecast(by: city.first?.key) { forecasts in
                         //print("@@@@@@@@@@ =>> \(forecasts)")
                         self.oneDayForecast = forecasts
-                        
                     }
-                    self.fetchFiveDayForecast(by: city.first?.key ?? "")
-                    self.fetchtwentyHours (by: city.first?.key ?? "")
+                    fetchFiveDayForecast(by: city.first?.key ?? "") { fiveForecast in
+                    self.fiveDayForecast = fiveForecast
+                    }
+                    fetchtwentyHours(by: city.first?.key ?? "") { twelveForecast in
+                    self.twentyHours = twelveForecast
+                    }
+                    
                 }
             }
        
@@ -123,45 +131,10 @@ class ViewController: UIViewController, ListProtocol {
     
     
     
-    func fetchFiveDayForecast (by cityKey: String){
-        
-        guard  let url = URL(string: "http://dataservice.accuweather.com/forecasts/v1/daily/5day/\(cityKey)?apikey=\(apiKey)&details=true&metric=true") else{ return }
-        
-        let session = URLSession.shared
-        session.dataTask(with: url) { (data, response, eror) in
-            guard  let data = data else { return }
-            
-            do{
-                let fiveForecast = try JSONDecoder().decode(FiveDay.self, from: data)
-                self.fiveDayForecast = fiveForecast.dailyForecasts
-                print("f3")
-            }catch{
-                print(error)
-            }
-            }.resume()
-    }
     
     
-    func fetchtwentyHours (by cityKey: String){
-        
-        guard  let url = URL(string: "http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/\(cityKey)?apikey=\(apiKey)&details=true&metric=true") else{ return }
-        
-        let session = URLSession.shared
-        session.dataTask(with: url) { (data, response, eror) in
-            guard  let data = data else {
-                return
-                
-            }
-            do{
-                let twentyHoursForecast = try JSONDecoder().decode([TwelveHoursForecast].self, from: data)
-                self.twentyHours = twentyHoursForecast
-                print("f4")
-            }catch{
-                print(error)
-            }
-            
-            }.resume()
-    }
+    
+    
 }
 
 extension ViewController : UITableViewDataSource, UITableViewDelegate{

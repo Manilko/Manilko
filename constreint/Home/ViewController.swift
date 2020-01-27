@@ -10,12 +10,20 @@ import UIKit
 
 class ViewController: UIViewController, ListProtocol {
     
+    
+    @IBOutlet weak var fiveDayForecastMainScreen: UITableView!
+    @IBOutlet weak var twentyHouersForecastMainScreen: UICollectionView!
+    @IBOutlet weak var temperatureMainScreen: UILabel!
+    @IBOutlet weak var cityNameMainScreen: UILabel!
+    
     func setCity(favoritCity: String) {
         fetchCityBy(name: favoritCity) { city in
             DispatchQueue.main.async {
                 self.cityNameMainScreen.text = city.first?.localizedName
                 self.cityKey = city.first?.key ?? ""
-                self.fetchOneDayForecast(by: city.first?.key )
+                fetchOneDayForecast(by: city.first?.key) { forecasts in
+                    self.oneDayForecast = forecasts
+                }
                 self.fetchFiveDayForecast(by: city.first?.key ?? "")
                 self.fetchtwentyHours (by: city.first?.key ?? "")
             }
@@ -23,34 +31,26 @@ class ViewController: UIViewController, ListProtocol {
     }
     
     
-    @IBOutlet weak var fiveDayForecastMainScreen: UITableView!
-    @IBOutlet weak var twentyHouersForecastMainScreen: UICollectionView!
-    @IBOutlet weak var temperatureMainScreen: UILabel!
-    @IBOutlet weak var cityNameMainScreen: UILabel!
-    
     var delegat : ListViewController?
   
     var cityKey = ""
+    var fiveDayForecast: [FiveDailyForecast?] = []
+    var twentyHours: [TwelveHoursForecast?] = []
 
     
     var oneDayForecast: [OneDailyForecast] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.temperatureMainScreen.text = String(self.oneDayForecast.first!.temperature.maximum.value)
-            }
-        }
-    }
-    
-    var twentyHours: [TwelveHoursForecast?] = [] {
-        didSet {
-            DispatchQueue.main.async {
                 self.fiveDayForecastMainScreen.reloadData()
                 self.twentyHouersForecastMainScreen.reloadData()
             }
         }
     }
     
-    var fiveDayForecast: [FiveDailyForecast?] = []
+    
+    
+    
     
     var start : [String] = UserDefaults.standard.object(forKey: "CITY") as? [String] ?? []
     
@@ -67,31 +67,21 @@ class ViewController: UIViewController, ListProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
-        if start.count == 0{
-            fetchCityBy(name: "Vinnytsia") { city in
-            DispatchQueue.main.async {
-                self.cityNameMainScreen.text = city.first?.localizedName
-                self.cityKey = city.first?.key ?? ""
-                self.fetchOneDayForecast(by: city.first?.key )
-                self.fetchFiveDayForecast(by: city.first?.key ?? "")
-                self.fetchtwentyHours (by: city.first?.key ?? "")
-                }
-            }
-        }else{
-            fetchCityBy(name:  start.first ?? "") { city in
+        
+            fetchCityBy(name:  start.first ?? "Vinnytsia") { city in
                 DispatchQueue.main.async {
                     self.cityNameMainScreen.text = city.first?.localizedName
                     self.cityKey = city.first?.key ?? ""
-                    self.fetchOneDayForecast(by: city.first?.key )
+                   fetchOneDayForecast(by: city.first?.key) { forecasts in
+                        //print("@@@@@@@@@@ =>> \(forecasts)")
+                        self.oneDayForecast = forecasts
+                        
+                    }
                     self.fetchFiveDayForecast(by: city.first?.key ?? "")
                     self.fetchtwentyHours (by: city.first?.key ?? "")
                 }
-
             }
-        }
-        
-        
+       
         fiveDayForecastMainScreen.dataSource = self
         fiveDayForecastMainScreen.delegate = self
         twentyHouersForecastMainScreen.delegate = self
@@ -128,23 +118,7 @@ class ViewController: UIViewController, ListProtocol {
     
     
     
-    func fetchOneDayForecast(by cityKey: String?) {
-        
-        guard  let cityKey = cityKey, let url = URL(string: "https://dataservice.accuweather.com/forecasts/v1/daily/1day/\(cityKey)?apikey=\(apiKey)&details=true&metric=true") else{ return }
-        
-        let session = URLSession.shared
-        session.dataTask(with: url) { (data, response, eror) in
-            guard  let data = data else { return }
-            
-            do{
-                let dayForecast = try JSONDecoder().decode(OneDay.self, from: data)
-                self.oneDayForecast = dayForecast.dailyForecasts
-                print("f2")
-            }catch{
-                print(error)
-            }
-            }.resume()
-    }
+    
     
     
     
@@ -213,6 +187,7 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
         if section == 0{
             return fiveDayForecast.count
         }else{
+            print(oneDayForecast.count)
             return oneDayForecast.count
         }
     }
@@ -254,6 +229,7 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate{
             if sunInformationCell == nil{
                 sunInformationCell = UITableViewCell.init(style: .default, reuseIdentifier: "idSunInformationCell") as! SunInfoTableViewCell
             }
+            
             
             let sunRiseHours = hours(isoDate: oneDayForecast[indexPath.row].sun.rise)
             let sunRiseMinutes = minutes(isoDate: oneDayForecast[indexPath.row].sun.rise)

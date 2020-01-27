@@ -10,20 +10,22 @@ import Foundation
 
 
 
-//func fetchOneDayForecast(by cityKey: String?) {
-//
-//    guard  let cityKey = cityKey, let url = URL(string: "https://dataservice.accuweather.com/forecasts/v1/daily/1day/\(cityKey)?apikey=\(apiKey)&details=true&metric=true") else{ return }
-//
-//    let session = URLSession.shared
-//    session.dataTask(with: url) { (data, response, eror) in
-//        guard  let data = data else { return }
-//
-//        do{
-//            let dayForecast = try JSONDecoder().decode(OneDay.self, from: data)
-//            self.oneDayForecast = dayForecast.dailyForecasts
-//        }catch{
-//            print(error)
-//        }
-//
-//        }.resume()
-//}
+func fetchOneDayForecast(by cityKey: String?, complition_hand: @escaping (([OneDailyForecast])->())) {
+    
+    guard  let cityKey = cityKey, let url = URL(string: "https://dataservice.accuweather.com/forecasts/v1/daily/1day/\(cityKey)?apikey=\(apiKey)&details=true&metric=true") else{ return }
+    
+    let session = URLSession.shared
+    session.dataTask(with: url) { (data, response, eror) in
+        guard  let data = data else { return }
+        
+        do{
+            let dayForecast = try JSONDecoder().decode(OneDay.self, from: data)
+            //self.oneDayForecast = dayForecast.dailyForecasts
+            //print(dayForecast)
+            complition_hand(dayForecast.dailyForecasts)
+            print("f2")
+        }catch{
+            print("$$$$$$$$==>> \(error)")
+        }
+        }.resume()
+}

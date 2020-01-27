@@ -11,14 +11,13 @@ import UIKit
 class ViewController: UIViewController, ListProtocol {
     
     func setCity(favoritCity: String) {
-        
         fetchCityBy(name: favoritCity) { city in
             DispatchQueue.main.async {
-                self.cityNameMainScreen.text = city[0].localizedName
-                self.cityKey = city[0].key
-                self.fetchOneDayForecast(by: city[0].key )
-                self.fetchFiveDayForecast(by: city[0].key)
-                self.fetchtwentyHours (by: city[0].key)
+                self.cityNameMainScreen.text = city.first?.localizedName
+                self.cityKey = city.first?.key ?? ""
+                self.fetchOneDayForecast(by: city.first?.key )
+                self.fetchFiveDayForecast(by: city.first?.key ?? "")
+                self.fetchtwentyHours (by: city.first?.key ?? "")
             }
         }
     }
@@ -37,7 +36,7 @@ class ViewController: UIViewController, ListProtocol {
     var oneDayForecast: [OneDailyForecast] = [] {
         didSet {
             DispatchQueue.main.async {
-                self.temperatureMainScreen.text = String(self.oneDayForecast[0].temperature.maximum.value)
+                self.temperatureMainScreen.text = String(self.oneDayForecast.first!.temperature.maximum.value)
             }
         }
     }
@@ -51,12 +50,7 @@ class ViewController: UIViewController, ListProtocol {
         }
     }
     
-    var fiveDayForecast: [FiveDailyForecast?] = [] {
-        didSet {
-            DispatchQueue.main.async {
-            }
-        }
-    }
+    var fiveDayForecast: [FiveDailyForecast?] = []
     
     var start : [String] = UserDefaults.standard.object(forKey: "CITY") as? [String] ?? []
     
@@ -75,22 +69,25 @@ class ViewController: UIViewController, ListProtocol {
         super.viewDidLoad()
      
         if start.count == 0{
-            fetchCityBy(name: "Vinnitsia") { city in
-                DispatchQueue.main.async {
-                    print("start.count == 0")
+            fetchCityBy(name: "Vinnytsia") { city in
+            DispatchQueue.main.async {
+                self.cityNameMainScreen.text = city.first?.localizedName
+                self.cityKey = city.first?.key ?? ""
+                self.fetchOneDayForecast(by: city.first?.key )
+                self.fetchFiveDayForecast(by: city.first?.key ?? "")
+                self.fetchtwentyHours (by: city.first?.key ?? "")
                 }
-                
             }
         }else{
-            fetchCityBy(name:  start[0]) { city in
+            fetchCityBy(name:  start.first ?? "") { city in
                 DispatchQueue.main.async {
-                    self.cityNameMainScreen.text = city[0].localizedName
-                    self.cityKey = city[0].key
-                    self.fetchOneDayForecast(by: city[0].key )
-                    self.fetchFiveDayForecast(by: city[0].key)
-                    self.fetchtwentyHours (by: city[0].key)
+                    self.cityNameMainScreen.text = city.first?.localizedName
+                    self.cityKey = city.first?.key ?? ""
+                    self.fetchOneDayForecast(by: city.first?.key )
+                    self.fetchFiveDayForecast(by: city.first?.key ?? "")
+                    self.fetchtwentyHours (by: city.first?.key ?? "")
                 }
-                
+
             }
         }
         
